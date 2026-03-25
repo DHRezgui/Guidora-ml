@@ -1,0 +1,49 @@
+{
+  "organizationId": "aa108e3f-0ef0-4a9a-889e-d252e115c3fc",
+  "totalSamples": 2,
+  "features": [
+    {
+      "timeOnPage": 83,
+      "scrollDepth": 41.4,
+      "clickMisses": 0,
+      "hesitations": 2,
+      "abandonmentRisk": 0.2,
+      "helpTriggered": 0,
+      "hasError": 0,
+      "multiplePages": 0,
+      "label": 0,
+      "sessionId": "3f50c2a1-8c4d-4f3a-9c2e-1a2b3c4d5e6f",
+      "userId": null,
+      "analyzedAt": "2026-03-25T13:24:47.810Z"
+    },
+    {
+      "timeOnPage": 83,
+      "scrollDepth": 41.4,
+      "clickMisses": 0,
+      "hesitations": 2,
+      "abandonmentRisk": 0.2,
+      "helpTriggered": 0,
+      "hasError": 0,
+      "multiplePages": 0,
+      "label": 0,
+      "sessionId": "3f50c2a1-8c4d-4f3a-9c2e-1a2b3c4d5e6f",
+      "userId": null,
+      "analyzedAt": "2026-03-23T13:22:19.777Z"
+    }
+  ],
+  "metadata": {
+    "generatedAt": "2026-03-25T13:26:54.938Z",
+    "version": "1.1",
+    "featureNames": [
+      "timeOnPage",
+      "scrollDepth",
+      "clickMisses",
+      "hesitations",
+      "abandonmentRisk",
+      "helpTriggered",
+      "hasError",
+      "multiplePages",
+      "label"
+    ]
+  }
+}

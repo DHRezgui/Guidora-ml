@@ -141,8 +141,29 @@ Then navigate to `notebooks/exploratory/` to explore data.
 ### 4. Train Model (When Ready)
 
 ```bash
-python training/train_model.py
+python ml/training/train_model.py --input ml/data/raw/dataset.json
 ```
+
+The training command automatically:
+
+- loads and prepares the dataset
+- trains a LightGBM classifier
+- evaluates validation/test splits
+- saves model and metrics artifacts
+
+Generated artifacts:
+
+- `ml/models/lightgbm_model.pkl`
+- `ml/models/feature_names.json`
+- `ml/results/metrics.json`
+
+Metrics report includes:
+
+- `accuracy`
+- `precision`
+- `recall`
+- `auc`
+- confusion matrix (tn/fp/fn/tp)
 
 ## Data Preparation and Feature Engineering
 
