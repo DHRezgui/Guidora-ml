@@ -1,0 +1,23 @@
+{
+  "target_column": "label",
+  "feature_columns": [
+    "timeOnPage",
+    "scrollDepth",
+    "clickMisses",
+    "hesitations",
+    "abandonmentRisk",
+    "helpTriggered",
+    "hasError",
+    "multiplePages",
+    "timePerPage",
+    "clickMissRate",
+    "hesitationRate",
+    "frictionScore",
+    "highFriction",
+    "multipleIssues"
+  ],
+  "rows": 180,
+  "train_rows": 126,
+  "valid_rows": 18,
+  "test_rows": 36
+}
