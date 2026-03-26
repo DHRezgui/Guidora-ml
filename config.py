@@ -108,6 +108,11 @@ FAQ_EMBEDDING_PATHS = {
     "output_embeddings": "./results/faq_embeddings.json",
 }
 
+SEMANTIC_SEARCH_CONFIG = {
+    "top_k": 5,
+    "min_similarity": 0.2,
+}
+
 # Paths
 PATHS = {
     "models": "./models/",

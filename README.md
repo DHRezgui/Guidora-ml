@@ -154,6 +154,20 @@ Generated artifact:
 
 The output contains model metadata, vector dimension, and one embedding vector for each FAQ question.
 
+### Semantic search (cosine similarity)
+
+Use semantic retrieval to find the most relevant FAQ entries for a user query:
+
+```bash
+python ml/rag/semantic_search.py "Je n'arrive pas a reinitialiser mon mot de passe"
+```
+
+Optional parameters:
+
+- `--top-k` to control the number of returned results
+- `--min-similarity` to filter low-relevance matches
+- `--embeddings` to use a custom embeddings file
+
 ## Quick Start
 
 ### 1. Activate Virtual Environment
