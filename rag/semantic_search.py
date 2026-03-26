@@ -120,6 +120,12 @@ def parse_args() -> argparse.Namespace:
         default=SEMANTIC_SEARCH_CONFIG["min_similarity"],
         help="Minimum cosine similarity threshold",
     )
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        dest="json_output",
+        help="Return results as JSON output",
+    )
     return parser.parse_args()
 
 
@@ -127,6 +133,20 @@ def main() -> None:
     args = parse_args()
     searcher = FaqSemanticSearcher(embeddings_path=args.embeddings)
     results = searcher.search(query=args.query, top_k=args.top_k, min_similarity=args.min_similarity)
+
+    if args.json_output:
+        print(
+            json.dumps(
+                {
+                    "success": True,
+                    "query": args.query,
+                    "total": len(results),
+                    "results": results,
+                },
+                ensure_ascii=False,
+            )
+        )
+        return
 
     if not results:
         print("No relevant FAQ results found.")
