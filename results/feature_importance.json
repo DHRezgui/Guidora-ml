@@ -1,0 +1,70 @@
+{
+  "features": [
+    {
+      "name": "scrollDepth",
+      "importance": 1564.925167761743,
+      "percentage": 50.88581976961237
+    },
+    {
+      "name": "timeOnPage",
+      "importance": 852.3374827802181,
+      "percentage": 27.714993933973563
+    },
+    {
+      "name": "clickMisses",
+      "importance": 379.5290991514921,
+      "percentage": 12.3409411098988
+    },
+    {
+      "name": "hesitations",
+      "importance": 244.38339805603027,
+      "percentage": 7.946481917695057
+    },
+    {
+      "name": "helpTriggered",
+      "importance": 32.093968749046326,
+      "percentage": 1.0435821105691259
+    },
+    {
+      "name": "clickMissRate",
+      "importance": 2.096820116043091,
+      "percentage": 0.06818115825108326
+    },
+    {
+      "name": "hasError",
+      "importance": 0.0,
+      "percentage": 0.0
+    },
+    {
+      "name": "multiplePages",
+      "importance": 0.0,
+      "percentage": 0.0
+    },
+    {
+      "name": "timePerPage",
+      "importance": 0.0,
+      "percentage": 0.0
+    },
+    {
+      "name": "hesitationRate",
+      "importance": 0.0,
+      "percentage": 0.0
+    },
+    {
+      "name": "frictionScore",
+      "importance": 0.0,
+      "percentage": 0.0
+    },
+    {
+      "name": "highFriction",
+      "importance": 0.0,
+      "percentage": 0.0
+    },
+    {
+      "name": "multipleIssues",
+      "importance": 0.0,
+      "percentage": 0.0
+    }
+  ],
+  "total_importance": 3075.365936614573
+}

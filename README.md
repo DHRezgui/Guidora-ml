@@ -199,6 +199,89 @@ Generated outputs in `ml/data/processed/`:
 - `highFriction`
 - `multipleIssues`
 
+## Automated Tests (Model Reliability)
+
+Automated tests for the prediction model are located in `ml/tests/test_predict.py`.
+
+The test suite validates:
+
+- model artifact loading (`lightgbm_model.pkl`, `feature_names.json`)
+- prediction output schema and value ranges
+- missing-feature imputation behavior
+- CLI real-time prediction via stdin JSON
+- threshold-dependent binary decision behavior
+
+### Run only prediction tests
+
+```bash
+python -m pytest ml/tests/test_predict.py -v
+```
+
+### Run all ML tests
+
+```bash
+python -m pytest ml/tests -v
+```
+
+## Real-time Model Usage (Integration Contract)
+
+The real-time predictor is exposed through the backend API and backed by
+the `ml/predict.py` script.
+
+### REST endpoints
+
+- `POST /ml/predictions/abandonment`
+- `POST /ml/predictions/batch`
+- `GET /ml/predictions/health`
+
+### Single prediction request example
+
+```json
+{
+    "features": {
+        "timeOnPage": 83,
+        "scrollDepth": 41.4,
+        "clickMisses": 0,
+        "hesitations": 2,
+        "abandonmentRisk": 0.2,
+        "helpTriggered": 0,
+        "hasError": 0,
+        "multiplePages": 1
+    },
+    "threshold": 0.5
+}
+```
+
+### Single prediction response example
+
+```json
+{
+    "success": true,
+    "prediction": {
+        "abandonmentRisk": 0.0106,
+        "willAbandon": false,
+        "confidence": 0.5106,
+        "threshold": 0.5
+    },
+    "timestamp": "2026-03-25T10:30:00.000Z",
+    "metadata": {
+        "modelVersion": "1.0",
+        "executionTimeMs": 145
+    }
+}
+```
+
+### CLI contract (script-level integration)
+
+`ml/predict.py` supports stdin JSON payloads and prints JSON results to stdout:
+
+```bash
+echo '{"features":{"timeOnPage":83,"scrollDepth":41.4,"clickMisses":0,"hesitations":2,"abandonmentRisk":0.2,"helpTriggered":0,"hasError":0,"multiplePages":1}}' | python ml/predict.py
+```
+
+This interface is used by the backend prediction service and can be reused by
+other consumers (workers, SDK bridges, batch jobs).
+
 ## Configuration Customization
 
 Edit `config.py` to adjust model hyperparameters:

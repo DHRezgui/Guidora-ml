@@ -1,12 +1,11 @@
 {
-  "generatedAt": "2026-03-25T13:28:22.084117+00:00",
+  "generatedAt": "2026-03-26T10:00:31.528826+00:00",
   "model": "LightGBM",
   "features": [
     "timeOnPage",
     "scrollDepth",
     "clickMisses",
     "hesitations",
-    "abandonmentRisk",
     "helpTriggered",
     "hasError",
     "multiplePages",
@@ -18,37 +17,37 @@
     "multipleIssues"
   ],
   "dataset": {
-    "rows": 180,
-    "train_rows": 126,
-    "valid_rows": 18,
-    "test_rows": 36
+    "rows": 1221,
+    "train_rows": 854,
+    "valid_rows": 122,
+    "test_rows": 245
   },
   "validation": {
-    "accuracy": 1.0,
-    "precision": 1.0,
-    "recall": 1.0,
-    "auc": 1.0,
+    "accuracy": 0.8278688524590164,
+    "precision": 0.5121951219512195,
+    "recall": 0.9545454545454546,
+    "auc": 0.8772727272727273,
     "threshold": 0.5,
-    "support": 18,
+    "support": 122,
     "confusion_matrix": {
-      "tn": 11,
-      "fp": 0,
-      "fn": 0,
-      "tp": 7
+      "tn": 80,
+      "fp": 20,
+      "fn": 1,
+      "tp": 21
     }
   },
   "test": {
-    "accuracy": 1.0,
-    "precision": 1.0,
-    "recall": 1.0,
-    "auc": 1.0,
+    "accuracy": 0.8530612244897959,
+    "precision": 0.5569620253164557,
+    "recall": 0.9777777777777777,
+    "auc": 0.9013888888888888,
     "threshold": 0.5,
-    "support": 36,
+    "support": 245,
     "confusion_matrix": {
-      "tn": 23,
-      "fp": 0,
-      "fn": 0,
-      "tp": 13
+      "tn": 165,
+      "fp": 35,
+      "fn": 1,
+      "tp": 44
     }
   }
 }

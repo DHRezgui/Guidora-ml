@@ -58,7 +58,6 @@ TRAINING_FEATURE_COLUMNS = [
     "scrollDepth",
     "clickMisses",
     "hesitations",
-    "abandonmentRisk",
     "helpTriggered",
     "hasError",
     "multiplePages",
