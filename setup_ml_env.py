@@ -76,6 +76,22 @@ def verify_lightgbm() -> bool:
         return False
 
 
+def verify_sentence_transformers() -> bool:
+    """Verify sentence-transformers installation and check version."""
+    print_section("Verifying sentence-transformers Installation")
+
+    try:
+        import sentence_transformers
+
+        version = sentence_transformers.__version__
+        print(f"✅ sentence-transformers {version} is installed")
+        print("   Embedding generation for semantic FAQ search is available")
+        return True
+    except ImportError:
+        print("❌ sentence-transformers is not installed")
+        return False
+
+
 def verify_dependencies() -> bool:
     """Verify all key dependencies are installed."""
     print_section("Verifying Key Dependencies")
@@ -88,6 +104,7 @@ def verify_dependencies() -> bool:
         "matplotlib": "Matplotlib",
         "psycopg2": "PostgreSQL adapter",
         "sqlalchemy": "SQLAlchemy",
+        "sentence_transformers": "Sentence Transformers",
     }
     
     all_ok = True
@@ -109,7 +126,7 @@ def create_directories() -> bool:
     """Create necessary output directories."""
     print_section("Creating Project Directories")
     
-    dirs = ["models", "data", "results", "notebooks/exploratory", "training"]
+    dirs = ["models", "data", "results", "notebooks/exploratory", "training", "rag"]
     
     try:
         for dir_name in dirs:
@@ -175,6 +192,7 @@ def main():
     
     # Post-installation verification
     checks["LightGBM Verification"] = verify_lightgbm()
+    checks["Sentence Transformers Verification"] = verify_sentence_transformers()
     checks["Core Dependencies"] = verify_dependencies()
     checks["Database Adapter"] = verify_database_connection()
     checks["Directory Structure"] = create_directories()

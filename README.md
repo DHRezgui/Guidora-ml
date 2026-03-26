@@ -42,6 +42,7 @@ This script will:
 - Verify Python version
 - Install all dependencies
 - Verify LightGBM installation
+- Verify sentence-transformers installation
 - Create necessary directories (models, data, results, notebooks)
 - Test database connectivity
 
@@ -101,6 +102,57 @@ Contains all configuration for the LightGBM model:
 | psycopg2 | 2.9.9 | PostgreSQL adapter |
 | jupyter | 1.1.1 | Notebook environment |
 | pytest | 8.3.2 | Testing framework |
+| sentence-transformers | 3.3.1 | Semantic embeddings for FAQ questions |
+
+## Semantic FAQ Embeddings (sentence-transformers)
+
+This sprint introduces semantic search capabilities for natural-language FAQ support.
+
+### Install / Verify
+
+```bash
+pip install -r requirements.txt
+python setup_ml_env.py
+```
+
+### Quick embedding smoke test
+
+```bash
+python ml/rag/semantic_embedder.py
+```
+
+Expected output includes:
+
+- selected model name
+- number of embedded questions
+- embedding vector dimension
+
+### Generate FAQ embeddings dataset
+
+Prepare FAQ entries in `ml/data/raw/faq_questions.json` with this schema:
+
+```json
+[
+    {
+        "id": "faq-001",
+        "question": "Comment réinitialiser mon mot de passe ?",
+        "answer": "...",
+        "category": "auth"
+    }
+]
+```
+
+Run generation:
+
+```bash
+python ml/rag/generate_faq_embeddings.py
+```
+
+Generated artifact:
+
+- `ml/results/faq_embeddings.json`
+
+The output contains model metadata, vector dimension, and one embedding vector for each FAQ question.
 
 ## Quick Start
 

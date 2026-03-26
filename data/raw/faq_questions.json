@@ -1,0 +1,492 @@
+﻿[
+    {
+        "id":  "faq-001",
+        "question":  "Comment creer un compte sur la plateforme ?",
+        "answer":  "Demandez une invitation a votre organisation, puis suivez le lien d\u0027activation recu par email pour definir votre mot de passe.",
+        "category":  "auth",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-002",
+        "question":  "Je n\u0027ai pas recu l\u0027email d\u0027activation, que faire ?",
+        "answer":  "Verifiez le dossier spam, confirmez votre adresse email et demandez a un administrateur de renvoyer l\u0027invitation.",
+        "category":  "auth",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-003",
+        "question":  "Comment reinitialiser mon mot de passe ?",
+        "answer":  "Depuis l\u0027ecran de connexion, cliquez sur Mot de passe oublie puis suivez le lien recu par email.",
+        "category":  "auth",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-004",
+        "question":  "Le lien de reinitialisation a expire, comment faire ?",
+        "answer":  "Relancez une nouvelle demande de reinitialisation depuis la page de connexion.",
+        "category":  "auth",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-005",
+        "question":  "Pourquoi suis-je deconnecte automatiquement ?",
+        "answer":  "Votre session JWT a expire. Reconnectez-vous et, si le probleme persiste, verifiez l\u0027horloge systeme et la configuration de session.",
+        "category":  "auth",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-006",
+        "question":  "Comment changer mon mot de passe apres connexion ?",
+        "answer":  "Accedez a votre profil utilisateur puis choisissez l\u0027option de mise a jour du mot de passe.",
+        "category":  "auth",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-007",
+        "question":  "Quelles regles doivent respecter mon mot de passe ?",
+        "answer":  "Utilisez au minimum 8 caracteres avec lettres, chiffres et, de preference, un caractere special.",
+        "category":  "security",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-008",
+        "question":  "Comment creer une organisation ?",
+        "answer":  "Un compte administrateur peut creer une organisation en renseignant le nom, le domaine et le plan associe.",
+        "category":  "organization",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-009",
+        "question":  "Comment inviter un membre dans mon organisation ?",
+        "answer":  "Depuis la gestion des utilisateurs, ajoutez l\u0027email du collaborateur et attribuez-lui un role approprie.",
+        "category":  "organization",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-010",
+        "question":  "Comment modifier le role d\u0027un utilisateur ?",
+        "answer":  "Un administrateur peut mettre a jour le role depuis l\u0027ecran de gestion des utilisateurs de l\u0027organisation.",
+        "category":  "organization",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-011",
+        "question":  "Quelle difference entre ADMIN et USER ?",
+        "answer":  "ADMIN gere l\u0027organisation, les utilisateurs et les configurations globales. USER utilise les parcours et outils autorises.",
+        "category":  "organization",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-012",
+        "question":  "Comment desactiver un utilisateur sans le supprimer ?",
+        "answer":  "Utilisez la desactivation de compte dans la fiche utilisateur pour bloquer l\u0027acces tout en conservant l\u0027historique.",
+        "category":  "organization",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-013",
+        "question":  "A quoi sert la cle API de mon organisation ?",
+        "answer":  "La cle API authentifie les appels SDK et backend relies a votre organisation. Elle doit rester confidentielle.",
+        "category":  "organization",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-014",
+        "question":  "Comment regenerer la cle API en cas de fuite ?",
+        "answer":  "Regenerer la cle depuis les parametres de l\u0027organisation puis mettez a jour toutes vos integrations.",
+        "category":  "security",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-015",
+        "question":  "Pourquoi je n\u0027ai pas acces a certaines pages du dashboard ?",
+        "answer":  "Votre role ne permet pas l\u0027acces a ces ressources. Contactez un administrateur pour ajuster vos permissions.",
+        "category":  "organization",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-016",
+        "question":  "Qu\u0027est-ce que l\u0027onboarding intelligent ?",
+        "answer":  "C\u0027est un accompagnement contextuel qui detecte la friction utilisateur et declenche des aides personnalisees.",
+        "category":  "onboarding",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-017",
+        "question":  "Comment demarrer un parcours d\u0027onboarding ?",
+        "answer":  "Connectez-vous puis suivez les etapes affichees dans votre guided tour ou votre espace de progression.",
+        "category":  "onboarding",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-018",
+        "question":  "Puis-je reprendre un onboarding interrompu ?",
+        "answer":  "Oui, votre progression est sauvegardee. Reconnectez-vous pour reprendre a la derniere etape validee.",
+        "category":  "onboarding",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-019",
+        "question":  "Comment savoir quelles etapes me restent ?",
+        "answer":  "Le tableau de progression affiche les etapes completees, en cours et restantes.",
+        "category":  "onboarding",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-020",
+        "question":  "Pourquoi mon onboarding reste bloque a une etape ?",
+        "answer":  "Verifiez les champs requis, les pieces jointes demandees et les validations en attente cote conformite.",
+        "category":  "onboarding",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-021",
+        "question":  "Que faire si je ne comprends pas une etape ?",
+        "answer":  "Utilisez l\u0027aide contextuelle du guided tour ou contactez le support en precisant l\u0027etape concernee.",
+        "category":  "guided_tour",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-022",
+        "question":  "A quoi sert le guided tour ?",
+        "answer":  "Le guided tour guide l\u0027utilisateur dans l\u0027interface avec des etapes interactives pour completer les actions essentielles.",
+        "category":  "guided_tour",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-023",
+        "question":  "Comment activer ou desactiver un guided tour ?",
+        "answer":  "Un administrateur peut activer, desactiver ou publier un guided tour depuis la section de configuration.",
+        "category":  "guided_tour",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-024",
+        "question":  "Pourquoi le guided tour ne s\u0027affiche pas ?",
+        "answer":  "Verifiez qu\u0027il est publie, que les permissions sont correctes et que les selecteurs UI cibles existent encore.",
+        "category":  "guided_tour",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-025",
+        "question":  "Comment creer une nouvelle etape dans un tour ?",
+        "answer":  "Ajoutez une step avec son titre, son message et le selecteur de composant cible dans la gestion des tours.",
+        "category":  "guided_tour",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-026",
+        "question":  "Puis-je personnaliser le texte des bulles d\u0027aide ?",
+        "answer":  "Oui, chaque step peut etre personnalisee avec un contenu adapte a vos utilisateurs et a votre terminologie.",
+        "category":  "guided_tour",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-027",
+        "question":  "Comment fonctionne la detection de friction utilisateur ?",
+        "answer":  "Le systeme analyse des signaux comportementaux comme le temps passe, les hesitations et les erreurs pour estimer le risque.",
+        "category":  "tracking",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-028",
+        "question":  "Quels evenements de tracking sont collectes ?",
+        "answer":  "Les interactions utiles au support contextuel sont collectees, par exemple erreurs, navigation, temps et actions d\u0027abandon.",
+        "category":  "tracking",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-029",
+        "question":  "Comment est calcule le score de risque d\u0027abandon ?",
+        "answer":  "Le score est predit par un modele ML a partir de signaux de comportement et de variables derivees.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-030",
+        "question":  "Pourquoi j\u0027ai recu une aide contextuelle automatiquement ?",
+        "answer":  "Une aide est declenchee lorsque le systeme detecte une probabilite elevee de blocage ou d\u0027abandon.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-031",
+        "question":  "Le systeme peut-il envoyer trop d\u0027aides ?",
+        "answer":  "Oui si les seuils sont trop bas. Ajustez le seuil de declenchement pour equilibrer recall et precision.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-032",
+        "question":  "Comment verifier si le modele ML est operationnel ?",
+        "answer":  "Utilisez l\u0027endpoint de health des predictions pour valider le chargement du modele et des features attendues.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-033",
+        "question":  "Que signifie une probabilite de 0.82 dans la prediction ?",
+        "answer":  "Cela signifie un risque eleve d\u0027abandon estime. Le resultat binaire depend ensuite du seuil de decision configure.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-034",
+        "question":  "Comment integrer le SDK React ?",
+        "answer":  "Installez le package SDK React, configurez la cle API organisation et initialisez le tracking au chargement de l\u0027app.",
+        "category":  "sdk",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-035",
+        "question":  "Comment integrer le SDK React Native ?",
+        "answer":  "Ajoutez le SDK React Native, initialisez-le au demarrage de l\u0027application et envoyez les evenements d\u0027etapes utilisateur.",
+        "category":  "sdk",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-036",
+        "question":  "Comment integrer le SDK Flutter ?",
+        "answer":  "Installez le package Flutter du dossier SDK, configurez l\u0027API key et appelez les fonctions de tracking dans vos ecrans.",
+        "category":  "sdk",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-037",
+        "question":  "Comment integrer le SDK Laravel ou Symfony ?",
+        "answer":  "Ajoutez le package correspondant, configurez les variables d\u0027environnement puis envoyez les evenements cote serveur.",
+        "category":  "sdk",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-038",
+        "question":  "Ou dois-je stocker ma cle API SDK ?",
+        "answer":  "Stockez-la dans les variables d\u0027environnement et ne la committez jamais dans le code source.",
+        "category":  "security",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-039",
+        "question":  "Comment tester rapidement mon integration SDK ?",
+        "answer":  "Envoyez un evenement de test puis verifiez sa reception dans les logs backend ou les outils de tracking.",
+        "category":  "sdk",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-040",
+        "question":  "Pourquoi je recois une erreur 401 sur les API ?",
+        "answer":  "Le token ou la cle API est manquant, invalide ou expire. Verifiez les headers d\u0027authentification.",
+        "category":  "api",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-041",
+        "question":  "Pourquoi je recois une erreur 403 sur les API ?",
+        "answer":  "Vous etes authentifie mais le role n\u0027a pas les permissions necessaires pour cette ressource.",
+        "category":  "api",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-042",
+        "question":  "Pourquoi je recois une erreur 400 sur une prediction ML ?",
+        "answer":  "Le payload est invalide ou incomplet. Verifiez le schema des features et les types attendus.",
+        "category":  "api",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-043",
+        "question":  "Comment appeler l\u0027endpoint de prediction unitaire ?",
+        "answer":  "Utilisez POST /ml/predictions/abandonment avec un objet features conforme au contrat DTO.",
+        "category":  "api",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-044",
+        "question":  "Comment appeler l\u0027endpoint de prediction batch ?",
+        "answer":  "Utilisez POST /ml/predictions/batch avec un tableau de requetes pour scorer plusieurs sessions en une fois.",
+        "category":  "api",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-045",
+        "question":  "Ou puis-je consulter la documentation API ?",
+        "answer":  "La documentation Swagger est disponible sur l\u0027instance backend selon la route configuree pour votre environnement.",
+        "category":  "api",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-046",
+        "question":  "Comment lancer le projet localement avec Docker ?",
+        "answer":  "Copiez .env.example vers .env puis executez docker-compose up -d et verifiez les services avec docker-compose ps.",
+        "category":  "devops",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-047",
+        "question":  "Pourquoi un service Docker est unhealthy ?",
+        "answer":  "Consultez les logs du conteneur, verifiez la connectivite base de donnees et les variables d\u0027environnement requises.",
+        "category":  "devops",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-048",
+        "question":  "Comment reinitialiser la base de donnees locale ?",
+        "answer":  "Redemarrez les services avec recreation des volumes si necessaire et rejouez le script d\u0027initialisation SQL.",
+        "category":  "devops",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-049",
+        "question":  "A quoi servent Redis et RabbitMQ dans le projet ?",
+        "answer":  "Redis sert au cache et RabbitMQ aux traitements asynchrones et messages inter-services.",
+        "category":  "architecture",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-050",
+        "question":  "Comment verifier si RabbitMQ fonctionne correctement ?",
+        "answer":  "Controlez l\u0027etat du conteneur, les files de messages et les logs de consommation cote backend.",
+        "category":  "architecture",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-051",
+        "question":  "Comment verifier si Redis fonctionne correctement ?",
+        "answer":  "Verifiez la disponibilite du conteneur Redis, puis testez les operations de lecture et ecriture simples.",
+        "category":  "architecture",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-052",
+        "question":  "Mes modifications frontend ne s\u0027affichent pas, pourquoi ?",
+        "answer":  "Videz le cache navigateur, redemarrez le serveur dashboard et verifiez que vous etes sur le bon environnement.",
+        "category":  "troubleshooting",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-053",
+        "question":  "Comment debuguer une erreur backend rapidement ?",
+        "answer":  "Consultez la stack trace, reproduisez l\u0027appel via Swagger ou Postman, puis ajoutez des logs autour du service cible.",
+        "category":  "troubleshooting",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-054",
+        "question":  "Comment executer les tests unitaires backend ?",
+        "answer":  "Depuis backend, lancez npm run test pour les unit tests puis npm run build pour verifier la compilation.",
+        "category":  "testing",
+        "priority":  "low"
+    },
+    {
+        "id":  "faq-055",
+        "question":  "Comment executer les tests ML ?",
+        "answer":  "Activez le venv puis lancez python -m pytest ml/tests -v pour valider le pipeline de prediction.",
+        "category":  "testing",
+        "priority":  "low"
+    },
+    {
+        "id":  "faq-056",
+        "question":  "Comment regeler les dependances Python du projet ML ?",
+        "answer":  "Mettez a jour requirements.txt apres installation des packages necessaires et testez le setup sur un environnement propre.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-057",
+        "question":  "Comment regenerer les embeddings FAQ apres mise a jour des questions ?",
+        "answer":  "Modifiez faq_questions.json puis executez le script generate_faq_embeddings.py pour recreer faq_embeddings.json.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-058",
+        "question":  "Quelle est la taille des vecteurs d\u0027embeddings FAQ ?",
+        "answer":  "Avec le modele multilingue MiniLM configure, chaque question est representee par un vecteur de dimension 384.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-059",
+        "question":  "Peut-on changer de modele sentence-transformers ?",
+        "answer":  "Oui, modifiez model_name dans SEMANTIC_CONFIG puis regenerez les embeddings pour rester coherent avec la recherche.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-060",
+        "question":  "Comment proteger les donnees utilisateurs suivies ?",
+        "answer":  "Limitez les donnees collectees, chiffrez les secrets, appliquez le moindre privilege et respectez les regles RGPD.",
+        "category":  "security",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-061",
+        "question":  "Qui peut acceder aux donnees de tracking ?",
+        "answer":  "L\u0027acces depend des permissions de role et des politiques de votre organisation.",
+        "category":  "security",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-062",
+        "question":  "Comment supprimer les donnees d\u0027un utilisateur ?",
+        "answer":  "Suivez la procedure interne de suppression ou d\u0027anonymisation selon votre politique de retention.",
+        "category":  "security",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-063",
+        "question":  "Comment demander de l\u0027aide au support plus efficacement ?",
+        "answer":  "Fournissez votre organisation, l\u0027horodatage, l\u0027etape concernee, les logs utiles et une capture d\u0027ecran si possible.",
+        "category":  "support",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-064",
+        "question":  "Quel est le delai de reponse du support ?",
+        "answer":  "Le delai depend de votre plan et de la severite de l\u0027incident. Les incidents bloquants sont traites en priorite.",
+        "category":  "support",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-065",
+        "question":  "Comment signaler un bug reproductible ?",
+        "answer":  "Indiquez les etapes precises de reproduction, le resultat attendu, le resultat observe et votre environnement.",
+        "category":  "support",
+        "priority":  "medium"
+    },
+    {
+        "id":  "faq-066",
+        "question":  "Le modele ML est-il parfait pour detecter l\u0027abandon ?",
+        "answer":  "Non, c\u0027est un outil probabiliste. Il faut suivre les metriques et ajuster les seuils selon vos objectifs produit.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-067",
+        "question":  "Comment diminuer les faux positifs des alertes d\u0027abandon ?",
+        "answer":  "Augmentez le seuil de decision et validez l\u0027impact sur le recall avant de deployer.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-068",
+        "question":  "Comment ne pas rater les utilisateurs vraiment a risque ?",
+        "answer":  "Utilisez un seuil privilegant le recall et mettez en place des actions d\u0027aide graduelles.",
+        "category":  "ml",
+        "priority":  "high"
+    },
+    {
+        "id":  "faq-069",
+        "question":  "A quoi sert l\u0027analyse semantique des questions FAQ ?",
+        "answer":  "Elle permet de retrouver des reponses pertinentes meme si l\u0027utilisateur formule sa question differemment.",
+        "category":  "semantic_search",
+        "priority":  "low"
+    },
+    {
+        "id":  "faq-070",
+        "question":  "Comment garder la FAQ a jour dans le temps ?",
+        "answer":  "Ajoutez les nouvelles questions du support chaque sprint, retirez les obsolete et regenerez regulierement les embeddings.",
+        "category":  "semantic_search",
+        "priority":  "low"
+    }
+]

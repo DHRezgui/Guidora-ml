@@ -96,6 +96,18 @@ EVALUATION_PARAMS = {
     "compute_shap": True,  # Compute SHAP values for interpretability
 }
 
+# Semantic FAQ embedding configuration
+SEMANTIC_CONFIG = {
+    "model_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "normalize_embeddings": True,
+    "batch_size": 32,
+}
+
+FAQ_EMBEDDING_PATHS = {
+    "input_questions": "./data/raw/faq_questions.json",
+    "output_embeddings": "./results/faq_embeddings.json",
+}
+
 # Paths
 PATHS = {
     "models": "./models/",
