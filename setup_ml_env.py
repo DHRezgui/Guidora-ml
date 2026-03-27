@@ -1,4 +1,4 @@
-# ML Environment Setup Script for LightGBM Abandonment Prediction Model
+﻿# ML Environment Setup Script for LightGBM Abandonment Prediction Model
 
 """
 Setup script to initialize the ML environment and verify LightGBM installation.
@@ -20,15 +20,15 @@ def print_section(title: str) -> None:
 
 def check_python_version() -> bool:
     """Check if Python version meets requirements (3.9+)."""
-    print("📋 Checking Python version...")
+    print(" Checking Python version...")
     version = sys.version_info
     min_version = (3, 9)
     
     if version >= min_version:
-        print(f"✅ Python {version.major}.{version.minor}.{version.micro} - OK")
+        print(f" Python {version.major}.{version.minor}.{version.micro} - OK")
         return True
     else:
-        print(f"❌ Python {version.major}.{version.minor}.{version.micro} - FAILED")
+        print(f" Python {version.major}.{version.minor}.{version.micro} - FAILED")
         print(f"   Required: Python {min_version[0]}.{min_version[1]}+")
         return False
 
@@ -38,10 +38,10 @@ def install_dependencies(requirements_file: str = "requirements.txt") -> bool:
     print_section("Installing Dependencies")
     
     if not Path(requirements_file).exists():
-        print(f"❌ {requirements_file} not found!")
+        print(f" {requirements_file} not found!")
         return False
     
-    print(f"📦 Installing packages from {requirements_file}...")
+    print(f" Installing packages from {requirements_file}...")
     try:
         subprocess.check_call([
             sys.executable, "-m", "pip", "install", 
@@ -51,10 +51,10 @@ def install_dependencies(requirements_file: str = "requirements.txt") -> bool:
             sys.executable, "-m", "pip", "install", 
             "-r", requirements_file
         ])
-        print("✅ Dependencies installed successfully")
+        print(" Dependencies installed successfully")
         return True
     except subprocess.CalledProcessError as e:
-        print(f"❌ Installation failed: {e}")
+        print(f" Installation failed: {e}")
         return False
 
 
@@ -65,14 +65,14 @@ def verify_lightgbm() -> bool:
     try:
         import lightgbm
         version = lightgbm.__version__
-        print(f"✅ LightGBM {version} is installed")
+        print(f" LightGBM {version} is installed")
         
         # Print LightGBM build info
-        print("\n📊 LightGBM Build Information:")
+        print("\n LightGBM Build Information:")
         print(f"   Binary: {lightgbm.LGBMClassifier}")
         return True
     except ImportError:
-        print("❌ LightGBM is not installed")
+        print(" LightGBM is not installed")
         return False
 
 
@@ -84,11 +84,11 @@ def verify_sentence_transformers() -> bool:
         import sentence_transformers
 
         version = sentence_transformers.__version__
-        print(f"✅ sentence-transformers {version} is installed")
+        print(f" sentence-transformers {version} is installed")
         print("   Embedding generation for semantic FAQ search is available")
         return True
     except ImportError:
-        print("❌ sentence-transformers is not installed")
+        print(" sentence-transformers is not installed")
         return False
 
 
@@ -112,12 +112,12 @@ def verify_dependencies() -> bool:
         try:
             __import__(module)
             version = __import__(module).__version__
-            print(f"✅ {name:20} {version}")
+            print(f" {name:20} {version}")
         except ImportError:
-            print(f"❌ {name:20} NOT INSTALLED")
+            print(f" {name:20} NOT INSTALLED")
             all_ok = False
         except AttributeError:
-            print(f"✅ {name:20} (version not available)")
+            print(f" {name:20} (version not available)")
     
     return all_ok
 
@@ -132,10 +132,10 @@ def create_directories() -> bool:
         for dir_name in dirs:
             path = Path(dir_name)
             path.mkdir(parents=True, exist_ok=True)
-            print(f"✅ {dir_name}")
+            print(f" {dir_name}")
         return True
     except Exception as e:
-        print(f"❌ Error creating directories: {e}")
+        print(f" Error creating directories: {e}")
         return False
 
 
@@ -145,11 +145,11 @@ def verify_database_connection() -> bool:
     
     try:
         import psycopg2
-        print("✅ PostgreSQL adapter available")
+        print(" PostgreSQL adapter available")
         print("   Note: Database connection will be tested during model training")
         return True
     except ImportError:
-        print("❌ PostgreSQL adapter not found")
+        print(" PostgreSQL adapter not found")
         return False
 
 
@@ -161,22 +161,22 @@ def generate_summary(checks: dict) -> None:
     total = len(checks)
     
     for check_name, result in checks.items():
-        symbol = "✅" if result else "❌"
+        symbol = "" if result else ""
         print(f"{symbol} {check_name}")
     
     print(f"\n{'=' * 60}")
     if passed == total:
-        print(f"🎉 All checks passed! ({passed}/{total})")
+        print(f" All checks passed! ({passed}/{total})")
         print("Your ML environment is ready for LightGBM model training.")
     else:
-        print(f"⚠️  {total - passed}/{total} checks failed. Please review the issues above.")
+        print(f"️  {total - passed}/{total} checks failed. Please review the issues above.")
     print(f"{'=' * 60}\n")
 
 
 def main():
     """Run the full setup process."""
     print("\n")
-    print("🤖 LightGBM ML Environment Setup")
+    print(" LightGBM ML Environment Setup")
     print("=" * 60)
     
     checks = {}
@@ -184,7 +184,7 @@ def main():
     # Pre-installation checks
     checks["Python Version"] = check_python_version()
     if not checks["Python Version"]:
-        print("\n❌ Setup aborted: Python version is too old")
+        print("\n Setup aborted: Python version is too old")
         sys.exit(1)
     
     # Install dependencies
@@ -213,3 +213,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

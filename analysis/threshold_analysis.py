@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Analyze and optimize decision threshold for abandonment prediction.
 
@@ -91,7 +91,7 @@ def analyze_thresholds():
     logger.info("\n" + "="*120)
     
     # Find optimal thresholds for different use cases
-    logger.info("\n🎯 RECOMMENDED THRESHOLDS:\n")
+    logger.info("\n RECOMMENDED THRESHOLDS:\n")
     
     # Best F1 (balanced)
     best_f1_idx = df_results['f1'].idxmax()
@@ -119,7 +119,7 @@ def analyze_thresholds():
         logger.info(f"  → Accuracy: {high_precision['accuracy']:.1%}, Recall: {high_precision['recall']:.1%}, Precision: {high_precision['precision']:.1%}")
         logger.info(f"  → Use when: Alert fatigue is a problem (only alert when very confident)")
     else:
-        logger.info(f"\n⚠ HIGH PRECISION (Few false alarms):")
+        logger.info(f"\n HIGH PRECISION (Few false alarms):")
         logger.info(f"  Not available with this dataset")
         logger.info(f"  (No threshold achieves >= 70% precision)")
         logger.info(f"  → Consider: This model is better at recall than precision (good for risk detection)")
@@ -163,3 +163,4 @@ def analyze_thresholds():
 
 if __name__ == '__main__':
     analyze_thresholds()
+

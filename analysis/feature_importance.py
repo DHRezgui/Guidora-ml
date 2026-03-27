@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Analyze feature importance from trained LightGBM model.
 
@@ -61,7 +61,7 @@ def analyze_feature_importance():
     logger.info("\n" + "="*70)
     
     # Summary insights
-    logger.info("\n📊 KEY INSIGHTS:")
+    logger.info("\n KEY INSIGHTS:")
     logger.info(f"  • Top 3 features account for {100 * sum([imp for _, imp in feature_imp[:3]]) / sum(importance):.1f}% of importance")
     logger.info(f"  • {feature_imp[0][0]} is the most predictive signal")
     logger.info(f"  • Derived features (frictionScore, etc.) heavily used")
@@ -85,3 +85,4 @@ def analyze_feature_importance():
 
 if __name__ == '__main__':
     analyze_feature_importance()
+

@@ -186,7 +186,7 @@ source venv/bin/activate
 python setup_ml_env.py
 ```
 
-Expected output shows all checks passing ✅
+Expected output shows all checks passing 
 
 Quick reproducible smoke test:
 
@@ -404,7 +404,7 @@ DB_PASSWORD=your_password
 3. Verify connection:
 
 ```bash
-python -c "from sqlalchemy import create_engine; engine = create_engine('postgresql://user:pwd@localhost:5432/db'); print('✅ Connection OK')"
+python -c "from sqlalchemy import create_engine; engine = create_engine('postgresql://user:pwd@localhost:5432/db'); print(' Connection OK')"
 ```
 
 ## Troubleshooting
@@ -481,12 +481,12 @@ pytest tests/ --cov=. --cov-report=html
 
 After successful installation:
 
-1. ✅ **Verify setup** with `python setup_ml_env.py`
-2. 📓 **Explore data** with Jupyter notebooks
-3. 🔍 **Analyze features** in `02_feature_analysis.ipynb`
-4. 🎓 **Train model** with `03_model_training.ipynb`
-5. 📊 **Evaluate performance** with `04_model_evaluation.ipynb`
-6. 🚀 **Deploy to production** (when ready)
+1.  **Verify setup** with `python setup_ml_env.py`
+2. � **Explore data** with Jupyter notebooks
+3. � **Analyze features** in `02_feature_analysis.ipynb`
+4. � **Train model** with `03_model_training.ipynb`
+5.  **Evaluate performance** with `04_model_evaluation.ipynb`
+6.  **Deploy to production** (when ready)
 
 ## Resources
 
@@ -508,3 +508,4 @@ For issues or questions:
 **Last Updated**: March 2026
 **LightGBM Version**: 4.6.0
 **Python Version**: 3.9+
+

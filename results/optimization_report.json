@@ -1,0 +1,68 @@
+{
+  "system_requirements": {
+    "target_ram": "8GB",
+    "batch_size_optimized": 16,
+    "model": "paraphrase-multilingual-MiniLM-L12-v2",
+    "model_size_mb": 471
+  },
+  "optimizations_implemented": [
+    {
+      "name": "Lazy Loading",
+      "description": "Model loaded only on first use, not at import",
+      "memory_saved": "471MB until first query",
+      "status": "enabled"
+    },
+    {
+      "name": "INT8 Quantization",
+      "description": "Model weights converted to 8-bit integers",
+      "memory_saved": "~25-30% of model memory",
+      "status": "enabled"
+    },
+    {
+      "name": "Batch Size Optimization",
+      "description": "Batch size reduced from 32 to 16 for 8GB systems",
+      "memory_saved": "~50% peak memory during embedding",
+      "status": "enabled"
+    },
+    {
+      "name": "Query Caching",
+      "description": "LRU cache with max 100 query results",
+      "memory_saved": "Redundant embedding computations avoided",
+      "status": "enabled"
+    },
+    {
+      "name": "Garbage Collection",
+      "description": "Explicit gc.collect() between batches",
+      "memory_saved": "Prevents memory fragmentation",
+      "status": "enabled"
+    }
+  ],
+  "configuration_recommendations": {
+    "batch_size": "16 (for 8GB RAM)",
+    "device": "cpu (more RAM available than GPU-accelerated)",
+    "max_cache_size": "100 queries",
+    "model": "paraphrase-multilingual-MiniLM-L12-v2 (already 471MB, smallest multilingual option)"
+  },
+  "memory_budget": {
+    "model_weights": "~350MB (after INT8 quantization)",
+    "embeddings_json": "~50MB (70 FAQs  384 dims  4 bytes)",
+    "query_cache": "~30MB (100 cached results)",
+    "overhead": "~100MB (Python runtime + libraries)",
+    "total_estimated": "~530MB (well under 8GB limit)"
+  },
+  "performance_expectations": {
+    "first_search": "2-3 seconds (includes model loading)",
+    "subsequent_searches": "100-200ms (inference only)",
+    "cached_searches": "5-10ms (cache lookup only)",
+    "throughput": "5-10 queries per second on single core"
+  },
+  "deployment_checklist": [
+    " Confirm system has at least 8GB RAM",
+    " Use batch_size=16 or smaller",
+    " Enable INT8 quantization for models",
+    " Pre-load embeddings at startup (not lazy)",
+    " Monitor memory with psutil in production",
+    " Set max_cache_size based on available resources",
+    " Run tests on target hardware before production"
+  ]
+}

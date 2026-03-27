@@ -1,0 +1,198 @@
+{
+  "summary": {
+    "total_tests": 8,
+    "avg_precision@5": 0.17500000000000002,
+    "avg_recall@5": 0.875,
+    "avg_ndcg@5": 0.875
+  },
+  "by_category": {
+    "account": {
+      "count": 2,
+      "precision": 0.2,
+      "recall": 1.0
+    },
+    "auth": {
+      "count": 3,
+      "precision": 0.20000000000000004,
+      "recall": 1.0
+    },
+    "organization": {
+      "count": 2,
+      "precision": 0.2,
+      "recall": 1.0
+    },
+    "edge": {
+      "count": 1,
+      "precision": 0.0,
+      "recall": 0.0
+    }
+  },
+  "detailed_results": [
+    {
+      "query": "create account",
+      "description": "Semantic match: Create account",
+      "category": "account",
+      "expected_ids": [
+        "faq-001"
+      ],
+      "retrieved_ids": [
+        "faq-001",
+        "faq-008",
+        "faq-010",
+        "faq-003",
+        "faq-060"
+      ],
+      "found_count": 1,
+      "metrics": {
+        "precision@5": 0.2,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      }
+    },
+    {
+      "query": "reset password",
+      "description": "Semantic match: Reset password",
+      "category": "auth",
+      "expected_ids": [
+        "faq-003"
+      ],
+      "retrieved_ids": [
+        "faq-003",
+        "faq-006",
+        "faq-007",
+        "faq-002",
+        "faq-014"
+      ],
+      "found_count": 1,
+      "metrics": {
+        "precision@5": 0.2,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      }
+    },
+    {
+      "query": "missing activation email",
+      "description": "Semantic match: Email not received",
+      "category": "account",
+      "expected_ids": [
+        "faq-002"
+      ],
+      "retrieved_ids": [
+        "faq-002",
+        "faq-001",
+        "faq-012",
+        "faq-003",
+        "faq-006"
+      ],
+      "found_count": 1,
+      "metrics": {
+        "precision@5": 0.2,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      }
+    },
+    {
+      "query": "create organization",
+      "description": "Semantic match: Create organization",
+      "category": "organization",
+      "expected_ids": [
+        "faq-008"
+      ],
+      "retrieved_ids": [
+        "faq-008",
+        "faq-009",
+        "faq-001",
+        "faq-013",
+        "faq-025"
+      ],
+      "found_count": 1,
+      "metrics": {
+        "precision@5": 0.2,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      }
+    },
+    {
+      "query": "modify user role",
+      "description": "Semantic match: Change user role",
+      "category": "organization",
+      "expected_ids": [
+        "faq-010"
+      ],
+      "retrieved_ids": [
+        "faq-010",
+        "faq-060",
+        "faq-012",
+        "faq-062",
+        "faq-068"
+      ],
+      "found_count": 1,
+      "metrics": {
+        "precision@5": 0.2,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      }
+    },
+    {
+      "query": "comment reinitialiser mon mot de passe",
+      "description": "Exact French match: Reset password",
+      "category": "auth",
+      "expected_ids": [
+        "faq-003"
+      ],
+      "retrieved_ids": [
+        "faq-003",
+        "faq-006",
+        "faq-007",
+        "faq-014",
+        "faq-002"
+      ],
+      "found_count": 1,
+      "metrics": {
+        "precision@5": 0.2,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      }
+    },
+    {
+      "query": "password change security",
+      "description": "Partial semantic match: Password-related",
+      "category": "auth",
+      "expected_ids": [
+        "faq-003"
+      ],
+      "retrieved_ids": [
+        "faq-003",
+        "faq-006",
+        "faq-007",
+        "faq-060",
+        "faq-010"
+      ],
+      "found_count": 1,
+      "metrics": {
+        "precision@5": 0.2,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      }
+    },
+    {
+      "query": "xyz abc 123",
+      "description": "Nonsensical query (expect no match)",
+      "category": "edge",
+      "expected_ids": [],
+      "retrieved_ids": [
+        "faq-049",
+        "faq-013",
+        "faq-051",
+        "faq-058",
+        "faq-064"
+      ],
+      "found_count": 0,
+      "metrics": {
+        "precision@5": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      }
+    }
+  ]
+}
