@@ -110,7 +110,7 @@ FAQ_EMBEDDING_PATHS = {
 
 SEMANTIC_SEARCH_CONFIG = {
     "top_k": 5,
-    "min_similarity": 0.2,
+    "min_similarity": 0.7,
 }
 
 # Paths
