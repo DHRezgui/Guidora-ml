@@ -1,0 +1,13 @@
+services:
+  ml:
+    build:
+      context: .
+      dockerfile: .docker/develop/Dockerfile
+    env_file: .docker/develop/.env
+    networks:
+      - onboarding-ml-dev
+    restart: unless-stopped
+
+networks:
+  onboarding-ml-dev:
+    driver: bridge

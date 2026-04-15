@@ -1,0 +1,13 @@
+services:
+  ml:
+    build:
+      context: .
+      dockerfile: .docker/prod/Dockerfile
+    env_file: .docker/prod/.env
+    networks:
+      - onboarding-ml-prod
+    restart: always
+
+networks:
+  onboarding-ml-prod:
+    driver: bridge
