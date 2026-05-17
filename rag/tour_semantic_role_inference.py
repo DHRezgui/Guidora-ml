@@ -292,6 +292,21 @@ def _preferred_order(
 # Main entry point
 # ---------------------------------------------------------------------------
 
+_cached_embedder: SemanticEmbedder | None = None
+
+
+def _get_embedder() -> SemanticEmbedder:
+    """Reuse one SentenceTransformer instance per Python process (worker)."""
+    global _cached_embedder
+    if _cached_embedder is None:
+        _cached_embedder = SemanticEmbedder()
+    return _cached_embedder
+
+
+def warmup_model() -> str:
+    """Load the sentence-transformers model once (worker startup / warmup)."""
+    return _get_embedder().model_name
+
 
 def infer(payload: Dict[str, Any]) -> Dict[str, Any]:
     candidates: List[Dict[str, Any]] = payload.get("candidates") or []
@@ -309,7 +324,7 @@ def infer(payload: Dict[str, Any]) -> Dict[str, Any]:
             },
         }
 
-    embedder = SemanticEmbedder()
+    embedder = _get_embedder()
 
     prototype_texts, role_index = _flatten_prototypes(ROLE_PROTOTYPES)
     prototype_vecs = embedder.embed(prototype_texts)
