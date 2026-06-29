@@ -1,492 +1,317 @@
-﻿[
-    {
-        "id":  "faq-001",
-        "question":  "Comment creer un compte sur la plateforme ?",
-        "answer":  "Demandez une invitation a votre organisation, puis suivez le lien d\u0027activation recu par email pour definir votre mot de passe.",
-        "category":  "auth",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-002",
-        "question":  "Je n\u0027ai pas recu l\u0027email d\u0027activation, que faire ?",
-        "answer":  "Verifiez le dossier spam, confirmez votre adresse email et demandez a un administrateur de renvoyer l\u0027invitation.",
-        "category":  "auth",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-003",
-        "question":  "Comment reinitialiser mon mot de passe ?",
-        "answer":  "Depuis l\u0027ecran de connexion, cliquez sur Mot de passe oublie puis suivez le lien recu par email.",
-        "category":  "auth",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-004",
-        "question":  "Le lien de reinitialisation a expire, comment faire ?",
-        "answer":  "Relancez une nouvelle demande de reinitialisation depuis la page de connexion.",
-        "category":  "auth",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-005",
-        "question":  "Pourquoi suis-je deconnecte automatiquement ?",
-        "answer":  "Votre session JWT a expire. Reconnectez-vous et, si le probleme persiste, verifiez l\u0027horloge systeme et la configuration de session.",
-        "category":  "auth",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-006",
-        "question":  "Comment changer mon mot de passe apres connexion ?",
-        "answer":  "Accedez a votre profil utilisateur puis choisissez l\u0027option de mise a jour du mot de passe.",
-        "category":  "auth",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-007",
-        "question":  "Quelles regles doivent respecter mon mot de passe ?",
-        "answer":  "Utilisez au minimum 8 caracteres avec lettres, chiffres et, de preference, un caractere special.",
-        "category":  "security",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-008",
-        "question":  "Comment creer une organisation ?",
-        "answer":  "Un compte administrateur peut creer une organisation en renseignant le nom, le domaine et le plan associe.",
-        "category":  "organization",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-009",
-        "question":  "Comment inviter un membre dans mon organisation ?",
-        "answer":  "Depuis la gestion des utilisateurs, ajoutez l\u0027email du collaborateur et attribuez-lui un role approprie.",
-        "category":  "organization",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-010",
-        "question":  "Comment modifier le role d\u0027un utilisateur ?",
-        "answer":  "Un administrateur peut mettre a jour le role depuis l\u0027ecran de gestion des utilisateurs de l\u0027organisation.",
-        "category":  "organization",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-011",
-        "question":  "Quelle difference entre ADMIN et USER ?",
-        "answer":  "ADMIN gere l\u0027organisation, les utilisateurs et les configurations globales. USER utilise les parcours et outils autorises.",
-        "category":  "organization",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-012",
-        "question":  "Comment desactiver un utilisateur sans le supprimer ?",
-        "answer":  "Utilisez la desactivation de compte dans la fiche utilisateur pour bloquer l\u0027acces tout en conservant l\u0027historique.",
-        "category":  "organization",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-013",
-        "question":  "A quoi sert la cle API de mon organisation ?",
-        "answer":  "La cle API authentifie les appels SDK et backend relies a votre organisation. Elle doit rester confidentielle.",
-        "category":  "organization",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-014",
-        "question":  "Comment regenerer la cle API en cas de fuite ?",
-        "answer":  "Regenerer la cle depuis les parametres de l\u0027organisation puis mettez a jour toutes vos integrations.",
-        "category":  "security",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-015",
-        "question":  "Pourquoi je n\u0027ai pas acces a certaines pages du dashboard ?",
-        "answer":  "Votre role ne permet pas l\u0027acces a ces ressources. Contactez un administrateur pour ajuster vos permissions.",
-        "category":  "organization",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-016",
-        "question":  "Qu\u0027est-ce que l\u0027onboarding intelligent ?",
-        "answer":  "C\u0027est un accompagnement contextuel qui detecte la friction utilisateur et declenche des aides personnalisees.",
-        "category":  "onboarding",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-017",
-        "question":  "Comment demarrer un parcours d\u0027onboarding ?",
-        "answer":  "Connectez-vous puis suivez les etapes affichees dans votre guided tour ou votre espace de progression.",
-        "category":  "onboarding",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-018",
-        "question":  "Puis-je reprendre un onboarding interrompu ?",
-        "answer":  "Oui, votre progression est sauvegardee. Reconnectez-vous pour reprendre a la derniere etape validee.",
-        "category":  "onboarding",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-019",
-        "question":  "Comment savoir quelles etapes me restent ?",
-        "answer":  "Le tableau de progression affiche les etapes completees, en cours et restantes.",
-        "category":  "onboarding",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-020",
-        "question":  "Pourquoi mon onboarding reste bloque a une etape ?",
-        "answer":  "Verifiez les champs requis, les pieces jointes demandees et les validations en attente cote conformite.",
-        "category":  "onboarding",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-021",
-        "question":  "Que faire si je ne comprends pas une etape ?",
-        "answer":  "Utilisez l\u0027aide contextuelle du guided tour ou contactez le support en precisant l\u0027etape concernee.",
-        "category":  "guided_tour",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-022",
-        "question":  "A quoi sert le guided tour ?",
-        "answer":  "Le guided tour guide l\u0027utilisateur dans l\u0027interface avec des etapes interactives pour completer les actions essentielles.",
-        "category":  "guided_tour",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-023",
-        "question":  "Comment activer ou desactiver un guided tour ?",
-        "answer":  "Un administrateur peut activer, desactiver ou publier un guided tour depuis la section de configuration.",
-        "category":  "guided_tour",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-024",
-        "question":  "Pourquoi le guided tour ne s\u0027affiche pas ?",
-        "answer":  "Verifiez qu\u0027il est publie, que les permissions sont correctes et que les selecteurs UI cibles existent encore.",
-        "category":  "guided_tour",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-025",
-        "question":  "Comment creer une nouvelle etape dans un tour ?",
-        "answer":  "Ajoutez une step avec son titre, son message et le selecteur de composant cible dans la gestion des tours.",
-        "category":  "guided_tour",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-026",
-        "question":  "Puis-je personnaliser le texte des bulles d\u0027aide ?",
-        "answer":  "Oui, chaque step peut etre personnalisee avec un contenu adapte a vos utilisateurs et a votre terminologie.",
-        "category":  "guided_tour",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-027",
-        "question":  "Comment fonctionne la detection de friction utilisateur ?",
-        "answer":  "Le systeme analyse des signaux comportementaux comme le temps passe, les hesitations et les erreurs pour estimer le risque.",
-        "category":  "tracking",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-028",
-        "question":  "Quels evenements de tracking sont collectes ?",
-        "answer":  "Les interactions utiles au support contextuel sont collectees, par exemple erreurs, navigation, temps et actions d\u0027abandon.",
-        "category":  "tracking",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-029",
-        "question":  "Comment est calcule le score de risque d\u0027abandon ?",
-        "answer":  "Le score est predit par un modele ML a partir de signaux de comportement et de variables derivees.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-030",
-        "question":  "Pourquoi j\u0027ai recu une aide contextuelle automatiquement ?",
-        "answer":  "Une aide est declenchee lorsque le systeme detecte une probabilite elevee de blocage ou d\u0027abandon.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-031",
-        "question":  "Le systeme peut-il envoyer trop d\u0027aides ?",
-        "answer":  "Oui si les seuils sont trop bas. Ajustez le seuil de declenchement pour equilibrer recall et precision.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-032",
-        "question":  "Comment verifier si le modele ML est operationnel ?",
-        "answer":  "Utilisez l\u0027endpoint de health des predictions pour valider le chargement du modele et des features attendues.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-033",
-        "question":  "Que signifie une probabilite de 0.82 dans la prediction ?",
-        "answer":  "Cela signifie un risque eleve d\u0027abandon estime. Le resultat binaire depend ensuite du seuil de decision configure.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-034",
-        "question":  "Comment integrer le SDK React ?",
-        "answer":  "Installez le package SDK React, configurez la cle API organisation et initialisez le tracking au chargement de l\u0027app.",
-        "category":  "sdk",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-035",
-        "question":  "Comment integrer le SDK React Native ?",
-        "answer":  "Ajoutez le SDK React Native, initialisez-le au demarrage de l\u0027application et envoyez les evenements d\u0027etapes utilisateur.",
-        "category":  "sdk",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-036",
-        "question":  "Comment integrer le SDK Flutter ?",
-        "answer":  "Installez le package Flutter du dossier SDK, configurez l\u0027API key et appelez les fonctions de tracking dans vos ecrans.",
-        "category":  "sdk",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-037",
-        "question":  "Comment integrer le SDK Laravel ou Symfony ?",
-        "answer":  "Ajoutez le package correspondant, configurez les variables d\u0027environnement puis envoyez les evenements cote serveur.",
-        "category":  "sdk",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-038",
-        "question":  "Ou dois-je stocker ma cle API SDK ?",
-        "answer":  "Stockez-la dans les variables d\u0027environnement et ne la committez jamais dans le code source.",
-        "category":  "security",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-039",
-        "question":  "Comment tester rapidement mon integration SDK ?",
-        "answer":  "Envoyez un evenement de test puis verifiez sa reception dans les logs backend ou les outils de tracking.",
-        "category":  "sdk",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-040",
-        "question":  "Pourquoi je recois une erreur 401 sur les API ?",
-        "answer":  "Le token ou la cle API est manquant, invalide ou expire. Verifiez les headers d\u0027authentification.",
-        "category":  "api",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-041",
-        "question":  "Pourquoi je recois une erreur 403 sur les API ?",
-        "answer":  "Vous etes authentifie mais le role n\u0027a pas les permissions necessaires pour cette ressource.",
-        "category":  "api",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-042",
-        "question":  "Pourquoi je recois une erreur 400 sur une prediction ML ?",
-        "answer":  "Le payload est invalide ou incomplet. Verifiez le schema des features et les types attendus.",
-        "category":  "api",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-043",
-        "question":  "Comment appeler l\u0027endpoint de prediction unitaire ?",
-        "answer":  "Utilisez POST /ml/predictions/abandonment avec un objet features conforme au contrat DTO.",
-        "category":  "api",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-044",
-        "question":  "Comment appeler l\u0027endpoint de prediction batch ?",
-        "answer":  "Utilisez POST /ml/predictions/batch avec un tableau de requetes pour scorer plusieurs sessions en une fois.",
-        "category":  "api",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-045",
-        "question":  "Ou puis-je consulter la documentation API ?",
-        "answer":  "La documentation Swagger est disponible sur l\u0027instance backend selon la route configuree pour votre environnement.",
-        "category":  "api",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-046",
-        "question":  "Comment lancer le projet localement avec Docker ?",
-        "answer":  "Copiez .env.example vers .env puis executez docker-compose up -d et verifiez les services avec docker-compose ps.",
-        "category":  "devops",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-047",
-        "question":  "Pourquoi un service Docker est unhealthy ?",
-        "answer":  "Consultez les logs du conteneur, verifiez la connectivite base de donnees et les variables d\u0027environnement requises.",
-        "category":  "devops",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-048",
-        "question":  "Comment reinitialiser la base de donnees locale ?",
-        "answer":  "Redemarrez les services avec recreation des volumes si necessaire et rejouez le script d\u0027initialisation SQL.",
-        "category":  "devops",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-049",
-        "question":  "A quoi servent Redis et RabbitMQ dans le projet ?",
-        "answer":  "Redis sert au cache et RabbitMQ aux traitements asynchrones et messages inter-services.",
-        "category":  "architecture",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-050",
-        "question":  "Comment verifier si RabbitMQ fonctionne correctement ?",
-        "answer":  "Controlez l\u0027etat du conteneur, les files de messages et les logs de consommation cote backend.",
-        "category":  "architecture",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-051",
-        "question":  "Comment verifier si Redis fonctionne correctement ?",
-        "answer":  "Verifiez la disponibilite du conteneur Redis, puis testez les operations de lecture et ecriture simples.",
-        "category":  "architecture",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-052",
-        "question":  "Mes modifications frontend ne s\u0027affichent pas, pourquoi ?",
-        "answer":  "Videz le cache navigateur, redemarrez le serveur dashboard et verifiez que vous etes sur le bon environnement.",
-        "category":  "troubleshooting",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-053",
-        "question":  "Comment debuguer une erreur backend rapidement ?",
-        "answer":  "Consultez la stack trace, reproduisez l\u0027appel via Swagger ou Postman, puis ajoutez des logs autour du service cible.",
-        "category":  "troubleshooting",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-054",
-        "question":  "Comment executer les tests unitaires backend ?",
-        "answer":  "Depuis backend, lancez npm run test pour les unit tests puis npm run build pour verifier la compilation.",
-        "category":  "testing",
-        "priority":  "low"
-    },
-    {
-        "id":  "faq-055",
-        "question":  "Comment executer les tests ML ?",
-        "answer":  "Activez le venv puis lancez python -m pytest ml/tests -v pour valider le pipeline de prediction.",
-        "category":  "testing",
-        "priority":  "low"
-    },
-    {
-        "id":  "faq-056",
-        "question":  "Comment regeler les dependances Python du projet ML ?",
-        "answer":  "Mettez a jour requirements.txt apres installation des packages necessaires et testez le setup sur un environnement propre.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-057",
-        "question":  "Comment regenerer les embeddings FAQ apres mise a jour des questions ?",
-        "answer":  "Modifiez faq_questions.json puis executez le script generate_faq_embeddings.py pour recreer faq_embeddings.json.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-058",
-        "question":  "Quelle est la taille des vecteurs d\u0027embeddings FAQ ?",
-        "answer":  "Avec le modele multilingue MiniLM configure, chaque question est representee par un vecteur de dimension 384.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-059",
-        "question":  "Peut-on changer de modele sentence-transformers ?",
-        "answer":  "Oui, modifiez model_name dans SEMANTIC_CONFIG puis regenerez les embeddings pour rester coherent avec la recherche.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-060",
-        "question":  "Comment proteger les donnees utilisateurs suivies ?",
-        "answer":  "Limitez les donnees collectees, chiffrez les secrets, appliquez le moindre privilege et respectez les regles RGPD.",
-        "category":  "security",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-061",
-        "question":  "Qui peut acceder aux donnees de tracking ?",
-        "answer":  "L\u0027acces depend des permissions de role et des politiques de votre organisation.",
-        "category":  "security",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-062",
-        "question":  "Comment supprimer les donnees d\u0027un utilisateur ?",
-        "answer":  "Suivez la procedure interne de suppression ou d\u0027anonymisation selon votre politique de retention.",
-        "category":  "security",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-063",
-        "question":  "Comment demander de l\u0027aide au support plus efficacement ?",
-        "answer":  "Fournissez votre organisation, l\u0027horodatage, l\u0027etape concernee, les logs utiles et une capture d\u0027ecran si possible.",
-        "category":  "support",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-064",
-        "question":  "Quel est le delai de reponse du support ?",
-        "answer":  "Le delai depend de votre plan et de la severite de l\u0027incident. Les incidents bloquants sont traites en priorite.",
-        "category":  "support",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-065",
-        "question":  "Comment signaler un bug reproductible ?",
-        "answer":  "Indiquez les etapes precises de reproduction, le resultat attendu, le resultat observe et votre environnement.",
-        "category":  "support",
-        "priority":  "medium"
-    },
-    {
-        "id":  "faq-066",
-        "question":  "Le modele ML est-il parfait pour detecter l\u0027abandon ?",
-        "answer":  "Non, c\u0027est un outil probabiliste. Il faut suivre les metriques et ajuster les seuils selon vos objectifs produit.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-067",
-        "question":  "Comment diminuer les faux positifs des alertes d\u0027abandon ?",
-        "answer":  "Augmentez le seuil de decision et validez l\u0027impact sur le recall avant de deployer.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-068",
-        "question":  "Comment ne pas rater les utilisateurs vraiment a risque ?",
-        "answer":  "Utilisez un seuil privilegant le recall et mettez en place des actions d\u0027aide graduelles.",
-        "category":  "ml",
-        "priority":  "high"
-    },
-    {
-        "id":  "faq-069",
-        "question":  "A quoi sert l\u0027analyse semantique des questions FAQ ?",
-        "answer":  "Elle permet de retrouver des reponses pertinentes meme si l\u0027utilisateur formule sa question differemment.",
-        "category":  "semantic_search",
-        "priority":  "low"
-    },
-    {
-        "id":  "faq-070",
-        "question":  "Comment garder la FAQ a jour dans le temps ?",
-        "answer":  "Ajoutez les nouvelles questions du support chaque sprint, retirez les obsolete et regenerez regulierement les embeddings.",
-        "category":  "semantic_search",
-        "priority":  "low"
-    }
+[
+  {
+    "id": "faq-001",
+    "question": "Comment creer un compte sur l'application ?",
+    "answer": "Rendez-vous sur la page d'inscription ou demandez une invitation a votre equipe. Suivez les instructions recues par email pour activer votre compte et definir votre mot de passe.",
+    "category": "account",
+    "priority": "high"
+  },
+  {
+    "id": "faq-002",
+    "question": "Je n'ai pas recu l'email de confirmation, que faire ?",
+    "answer": "Verifiez votre dossier spam ou courriers indesirables. Confirmez que l'adresse saisie est correcte, puis demandez un nouvel envoi depuis l'ecran de connexion ou contactez votre administrateur.",
+    "category": "account",
+    "priority": "high"
+  },
+  {
+    "id": "faq-003",
+    "question": "Comment me connecter a l'application ?",
+    "answer": "Ouvrez la page de connexion, saisissez votre adresse email et votre mot de passe, puis validez. Si votre organisation utilise une connexion unique (SSO), utilisez le bouton dedie.",
+    "category": "account",
+    "priority": "high"
+  },
+  {
+    "id": "faq-004",
+    "question": "Comment reinitialiser mon mot de passe ?",
+    "answer": "Depuis l'ecran de connexion, cliquez sur Mot de passe oublie, saisissez votre email et suivez le lien recu pour choisir un nouveau mot de passe.",
+    "category": "account",
+    "priority": "high"
+  },
+  {
+    "id": "faq-005",
+    "question": "Le lien de reinitialisation a expire, comment faire ?",
+    "answer": "Les liens de reinitialisation ont une duree limitee pour des raisons de securite. Relancez une nouvelle demande depuis la page de connexion.",
+    "category": "account",
+    "priority": "high"
+  },
+  {
+    "id": "faq-006",
+    "question": "Pourquoi suis-je deconnecte automatiquement ?",
+    "answer": "Pour votre securite, la session expire apres une periode d'inactivite. Reconnectez-vous. Si le probleme persiste, verifiez l'heure de votre appareil et contactez le support.",
+    "category": "account",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-007",
+    "question": "Comment changer mon mot de passe apres connexion ?",
+    "answer": "Accedez a vos parametres de compte ou a votre profil, puis choisissez l'option de modification du mot de passe. Saisissez l'ancien mot de passe puis le nouveau.",
+    "category": "account",
+    "priority": "high"
+  },
+  {
+    "id": "faq-008",
+    "question": "Quelles regles doit respecter mon mot de passe ?",
+    "answer": "Utilisez au minimum 8 caracteres en melangeant lettres et chiffres. Un caractere special est recommande. Evitez les mots courants et ne reutilisez pas un mot de passe d'une autre application.",
+    "category": "account",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-009",
+    "question": "Par ou commencer dans l'application ?",
+    "answer": "Consultez le tableau de bord ou la page d'accueil : les actions principales y sont regroupees. Un guide de demarrage peut aussi vous proposer les premieres etapes a suivre.",
+    "category": "getting_started",
+    "priority": "high"
+  },
+  {
+    "id": "faq-010",
+    "question": "Ou trouver l'aide dans l'application ?",
+    "answer": "Ouvrez le panneau Aide, generalement accessible via une icone ou un bouton dedie. Vous pouvez y rechercher une reponse ou parcourir les questions frequentes.",
+    "category": "getting_started",
+    "priority": "high"
+  },
+  {
+    "id": "faq-011",
+    "question": "Comment naviguer entre les differentes sections ?",
+    "answer": "Utilisez le menu principal (barre laterale ou barre superieure) pour acceder aux modules de l'application. Le fil d'Ariane, lorsqu'il est affiche, indique votre position actuelle.",
+    "category": "getting_started",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-012",
+    "question": "Comment rechercher une information rapidement ?",
+    "answer": "Utilisez la barre de recherche globale si elle est disponible. Saisissez un mot-cle, un nom ou une reference, puis selectionnez le resultat correspondant.",
+    "category": "getting_started",
+    "priority": "high"
+  },
+  {
+    "id": "faq-013",
+    "question": "Comment utiliser les filtres sur une liste ?",
+    "answer": "Ouvrez les filtres au-dessus du tableau ou de la liste, choisissez les criteres souhaites (date, statut, categorie, etc.) puis appliquez-les. Reinitialisez les filtres pour revenir a la vue complete.",
+    "category": "getting_started",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-014",
+    "question": "Que faire si je ne sais pas quelle action effectuer ?",
+    "answer": "Consultez le panneau Aide, suivez un guide pas a pas si propose, ou contactez votre responsable ou le support de votre organisation en precisant la page concernee.",
+    "category": "getting_started",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-015",
+    "question": "Comment modifier mes informations personnelles ?",
+    "answer": "Accedez a votre profil ou a Parametres du compte. Mettez a jour les champs autorises (nom, telephone, photo, etc.) puis enregistrez vos modifications.",
+    "category": "profile",
+    "priority": "high"
+  },
+  {
+    "id": "faq-016",
+    "question": "Comment changer mon adresse email ?",
+    "answer": "Dans les parametres de votre compte, modifiez l'adresse email et validez. Une confirmation par email peut etre necessaire avant que le changement soit effectif.",
+    "category": "profile",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-017",
+    "question": "Comment changer la langue de l'interface ?",
+    "answer": "Ouvrez les parametres ou les preferences utilisateur et selectionnez la langue souhaitee dans la liste. L'application se met a jour apres validation.",
+    "category": "profile",
+    "priority": "low"
+  },
+  {
+    "id": "faq-018",
+    "question": "Comment gerer mes notifications ?",
+    "answer": "Dans les parametres de notification, activez ou desactivez les alertes par email, navigateur ou application mobile selon vos preferences.",
+    "category": "profile",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-019",
+    "question": "Comment me deconnecter en toute securite ?",
+    "answer": "Utilisez l'option Deconnexion dans le menu utilisateur. Sur un appareil partage, fermez aussi l'onglet du navigateur apres vous etre deconnecte.",
+    "category": "profile",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-020",
+    "question": "Comment enregistrer mes modifications ?",
+    "answer": "Apres avoir rempli ou modifie un formulaire, cliquez sur Enregistrer, Sauvegarder ou Valider. Attendez la confirmation avant de quitter la page.",
+    "category": "usage",
+    "priority": "high"
+  },
+  {
+    "id": "faq-021",
+    "question": "Pourquoi mon action n'a pas ete prise en compte ?",
+    "answer": "Verifiez les champs obligatoires marques d'un asterisque, les messages d'erreur affiches et votre connexion internet. Reessayez apres avoir corrige les informations manquantes.",
+    "category": "usage",
+    "priority": "high"
+  },
+  {
+    "id": "faq-022",
+    "question": "Un message d'erreur s'affiche, que faire ?",
+    "answer": "Lisez le message affiche : il indique souvent la cause (champ manquant, droit insuffisant, format incorrect). Corrigez le probleme signale ou contactez le support avec une capture d'ecran.",
+    "category": "usage",
+    "priority": "high"
+  },
+  {
+    "id": "faq-023",
+    "question": "Comment annuler une action en cours ?",
+    "answer": "Utilisez le bouton Annuler ou Retour si disponible. Si l'action est deja validee, consultez les options d'annulation ou de correction prevues dans l'application.",
+    "category": "usage",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-024",
+    "question": "Comment telecharger un document ou un rapport ?",
+    "answer": "Reperez l'icone ou le bouton Exporter, Telecharger ou PDF sur la page concernee. Choisissez le format propose si plusieurs options sont disponibles.",
+    "category": "usage",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-025",
+    "question": "Quels formats de fichier puis-je importer ?",
+    "answer": "Les formats acceptes dependent de la fonctionnalite (CSV, Excel, PDF, images, etc.). Consultez l'ecran d'import ou la documentation de votre organisation pour la liste exacte.",
+    "category": "usage",
+    "priority": "low"
+  },
+  {
+    "id": "faq-026",
+    "question": "Comment exporter mes donnees ?",
+    "answer": "Accedez a la section concernee (liste, rapport ou parametres) et utilisez l'option Exporter. Selectionnez le format souhaite et telechargez le fichier genere.",
+    "category": "usage",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-027",
+    "question": "Pourquoi une page met du temps a charger ?",
+    "answer": "Un volume de donnees important ou une connexion lente peut ralentir l'affichage. Patientez quelques secondes, verifiez votre reseau et actualisez la page si necessaire.",
+    "category": "usage",
+    "priority": "low"
+  },
+  {
+    "id": "faq-028",
+    "question": "Ou consulter mon abonnement ou mon offre ?",
+    "answer": "Rendez-vous dans la section Facturation, Abonnement ou Mon compte selon l'organisation de votre application. Vous y verrez votre offre actuelle et sa date de renouvellement.",
+    "category": "billing",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-029",
+    "question": "Comment mettre a jour mon moyen de paiement ?",
+    "answer": "Dans la section Facturation, ajoutez ou modifiez votre carte ou votre mode de paiement. Enregistrez les changements avant la prochaine echeance.",
+    "category": "billing",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-030",
+    "question": "Comment obtenir une facture ?",
+    "answer": "Consultez l'historique de facturation dans votre espace compte. Vous pouvez generalement telecharger chaque facture au format PDF.",
+    "category": "billing",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-031",
+    "question": "Comment resilier ou modifier mon abonnement ?",
+    "answer": "Accedez aux parametres d'abonnement et suivez les options de modification ou de resiliation. Les conditions peuvent dependre de votre contrat : contactez le support si besoin.",
+    "category": "billing",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-032",
+    "question": "Ma periode d'essai se termine bientot, que dois-je faire ?",
+    "answer": "Ajoutez un moyen de paiement ou choisissez une offre avant la fin de l'essai pour conserver l'acces. Un rappel peut vous etre envoye par email.",
+    "category": "billing",
+    "priority": "low"
+  },
+  {
+    "id": "faq-033",
+    "question": "Quelles donnees l'application collecte-t-elle sur moi ?",
+    "answer": "Les donnees collectees dependent des fonctionnalites utilisees (compte, activite, preferences). Consultez la politique de confidentialite de votre organisation pour le detail.",
+    "category": "privacy",
+    "priority": "high"
+  },
+  {
+    "id": "faq-034",
+    "question": "Comment demander la suppression de mes donnees ?",
+    "answer": "Contactez le support ou l'administrateur de votre organisation avec votre identifiant. Une procedure de suppression ou d'anonymisation sera appliquee selon la reglementation en vigueur.",
+    "category": "privacy",
+    "priority": "high"
+  },
+  {
+    "id": "faq-035",
+    "question": "Qui peut voir mes informations dans l'application ?",
+    "answer": "L'acces depend des droits attribues par votre organisation. Seuls les utilisateurs autorises (collegues, managers, administrateurs) peuvent consulter les donnees partagees.",
+    "category": "privacy",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-036",
+    "question": "A quoi servent les cookies et comment les gerer ?",
+    "answer": "Les cookies permettent de maintenir votre session et de memoriser certaines preferences. Vous pouvez les accepter ou les refuser via la banniere affichee ou les parametres de votre navigateur.",
+    "category": "privacy",
+    "priority": "low"
+  },
+  {
+    "id": "faq-037",
+    "question": "Comment utiliser la recherche dans le panneau Aide ?",
+    "answer": "Ouvrez le panneau Aide, saisissez votre question en langage naturel et validez. L'application affiche les reponses les plus proches de votre formulation.",
+    "category": "help",
+    "priority": "high"
+  },
+  {
+    "id": "faq-038",
+    "question": "Les reponses proposees ne correspondent pas a ma question",
+    "answer": "Reformulez votre question avec d'autres mots ou des termes plus precis. Si aucune reponse ne convient, contactez le support de votre organisation.",
+    "category": "help",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-039",
+    "question": "A quoi sert le guide pas a pas dans l'application ?",
+    "answer": "Le guide interactif vous accompagne etape par etape sur les ecrans importants. Suivez les indications a l'ecran pour decouvrir les actions essentielles.",
+    "category": "help",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-040",
+    "question": "Puis-je ignorer ou fermer un guide d'aide ?",
+    "answer": "Oui, vous pouvez fermer ou passer le guide a tout moment. Vous pourrez le relancer plus tard depuis le menu Aide ou les parametres si cette option est disponible.",
+    "category": "help",
+    "priority": "low"
+  },
+  {
+    "id": "faq-041",
+    "question": "Comment indiquer si une reponse m'a ete utile ?",
+    "answer": "Sous certaines reponses, des boutons Oui ou Non permettent de signaler si l'information vous a aide. Votre retour aide a ameliorer la base d'aide.",
+    "category": "help",
+    "priority": "low"
+  },
+  {
+    "id": "faq-042",
+    "question": "Comment contacter le support ?",
+    "answer": "Utilisez le formulaire de contact, l'adresse email ou le chat support indiques par votre organisation. Precisez votre nom, le contexte et la page concernee.",
+    "category": "support",
+    "priority": "high"
+  },
+  {
+    "id": "faq-043",
+    "question": "Quelles informations fournir pour signaler un probleme ?",
+    "answer": "Indiquez les etapes pour reproduire le probleme, le resultat attendu, le resultat observe, la date et l'heure, ainsi qu'une capture d'ecran si possible.",
+    "category": "support",
+    "priority": "high"
+  },
+  {
+    "id": "faq-044",
+    "question": "Quel est le delai de reponse du support ?",
+    "answer": "Le delai depend de votre organisation et de la gravite du probleme. Les incidents bloquants sont generalement traites en priorite.",
+    "category": "support",
+    "priority": "medium"
+  },
+  {
+    "id": "faq-045",
+    "question": "L'application fonctionne-t-elle sur mobile ou tablette ?",
+    "answer": "Selon votre organisation, l'application est accessible via un navigateur mobile adapte ou une application dediee. Verifiez les liens ou stores indiques par votre equipe.",
+    "category": "mobile",
+    "priority": "medium"
+  }
 ]

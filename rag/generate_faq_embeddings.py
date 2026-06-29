@@ -60,6 +60,7 @@ def build_embedding_records(faq_items: List[Dict[str, Any]], vectors: List[List[
                 "question": faq_item["question"],
                 "answer": faq_item.get("answer", ""),
                 "category": faq_item.get("category", "general"),
+                "priority": faq_item.get("priority", "medium"),
                 "embedding": embedding,
             }
         )
