@@ -42,6 +42,7 @@ FEATURE_ENGINEERING = {
 # Backend-aligned input schema (backend/src/ml/constants/dataset-schema.ts)
 RAW_FEATURE_COLUMNS = [
     "timeOnPage",
+    "pageTime",
     "scrollDepth",
     "clickMisses",
     "hesitations",
@@ -55,6 +56,7 @@ RAW_FEATURE_COLUMNS = [
 # Training schema includes derived features from the ML preprocessing pipeline
 TRAINING_FEATURE_COLUMNS = [
     "timeOnPage",
+    "pageTime",
     "scrollDepth",
     "clickMisses",
     "hesitations",

@@ -1,5 +1,6 @@
 [
   "timeOnPage",
+  "pageTime",
   "scrollDepth",
   "clickMisses",
   "hesitations",

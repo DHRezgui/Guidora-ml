@@ -54,18 +54,32 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from ml.config import PATHS, TRAINING_FEATURE_COLUMNS
+from ml.training.derived_features import enrich_features_dict
+
+
+def compute_abandonment_confidence(abandonment_risk: float, threshold: float) -> float:
+    """Confidence as normalized distance from the decision threshold."""
+    denom = max(threshold, 1.0 - threshold)
+    if denom <= 0:
+        return 0.0
+    return abs(abandonment_risk - threshold) / denom
+
+
+def log_odds_to_probability(log_odds: float) -> float:
+    """Convert SHAP / LightGBM log-odds baseline to a 0-1 probability."""
+    if not np.isfinite(log_odds):
+        return 0.0
+    if log_odds >= 20:
+        return 1.0
+    if log_odds <= -20:
+        return 0.0
+    return float(1.0 / (1.0 + np.exp(-log_odds)))
 
 
 class PredictionEngine:
     """Load trained model and make predictions."""
 
     def __init__(self, model_path: str | None = None, features_path: str | None = None):
-        """Initialize prediction engine.
-        
-        Args:
-            model_path: Path to trained LightGBM model (.pkl)
-            features_path: Path to feature names JSON
-        """
         # Get ml directory path
         ml_dir = Path(__file__).resolve().parent
         
@@ -82,6 +96,7 @@ class PredictionEngine:
         
         self.model = None
         self.feature_names = None
+        self._shap_explainer = None
         self.load_model()
 
     def load_model(self) -> None:
@@ -102,40 +117,93 @@ class PredictionEngine:
         except Exception as e:
             raise RuntimeError(f"Failed to load model: {str(e)}")
 
+    def _prepare_feature_matrix(
+        self,
+        features: dict[str, float],
+    ) -> tuple[np.ndarray, list[float]]:
+        feature_values: list[float] = []
+        missing_features: list[str] = []
+
+        for feature_name in self.feature_names:
+            if feature_name not in features:
+                missing_features.append(feature_name)
+                feature_values.append(0.0)
+            else:
+                feature_values.append(float(features[feature_name]))
+
+        if missing_features:
+            print(
+                f"Warning: Missing features imputed with 0.0: {missing_features}",
+                file=sys.stderr,
+            )
+
+        X = np.array([feature_values]).reshape(1, -1)
+        return X, feature_values
+
+    def _compute_shap_explanation(
+        self,
+        X: np.ndarray,
+        feature_values: list[float],
+        *,
+        top_k: int = 5,
+    ) -> dict[str, Any]:
+        import shap
+
+        if self._shap_explainer is None:
+            self._shap_explainer = shap.TreeExplainer(self.model)
+
+        import pandas as pd
+
+        X_df = pd.DataFrame(X, columns=self.feature_names)
+        shap_values = self._shap_explainer.shap_values(X_df)
+        if isinstance(shap_values, list):
+            contributions = np.asarray(shap_values[1][0], dtype=float)
+            expected_value = float(np.asarray(self._shap_explainer.expected_value)[1])
+        else:
+            contributions = np.asarray(shap_values[0], dtype=float)
+            expected_raw = self._shap_explainer.expected_value
+            expected_value = float(np.asarray(expected_raw).reshape(-1)[0])
+
+        rows = [
+            {
+                "feature": feature_name,
+                "contribution": round(float(contribution), 4),
+                "value": round(float(value), 4),
+            }
+            for feature_name, contribution, value in zip(
+                self.feature_names,
+                contributions,
+                feature_values,
+            )
+        ]
+        rows.sort(key=lambda row: abs(row["contribution"]), reverse=True)
+
+        return {
+            "topFeatures": rows[:top_k],
+            "expectedValue": round(expected_value, 4),
+            "baseProbability": round(log_odds_to_probability(expected_value), 4),
+        }
+
     def predict(
         self,
         features: dict[str, float],
         threshold: float = 0.5,
+        *,
+        explain: bool = False,
     ) -> dict[str, Any]:
         """Make abandonment prediction.
         
         Args:
             features: Feature dictionary with all required fields
             threshold: Decision boundary for binary classification
+            explain: When true, attach SHAP top-feature contributions
             
         Returns:
             Prediction result with risk score and classification
         """
         try:
-            # Extract features in correct order
-            feature_values = []
-            missing_features = []
-            
-            for feature_name in self.feature_names:
-                if feature_name not in features:
-                    missing_features.append(feature_name)
-                    feature_values.append(0.0)  # Default imputation
-                else:
-                    feature_values.append(float(features[feature_name]))
-            
-            if missing_features:
-                print(
-                    f"Warning: Missing features imputed with 0.0: {missing_features}",
-                    file=sys.stderr,
-                )
-            
-            # Reshape for single sample prediction
-            X = np.array([feature_values]).reshape(1, -1)
+            features = enrich_features_dict(features)
+            X, feature_values = self._prepare_feature_matrix(features)
             
             # Get probability prediction
             proba = self.model.predict_proba(X)[0]
@@ -144,15 +212,20 @@ class PredictionEngine:
             # Binary prediction based on threshold
             will_abandon = abandonment_risk >= threshold
             
-            # Confidence: distance from threshold (higher = more confident)
-            confidence = 1.0 - abs(abandonment_risk - threshold)
+            # Confidence: certainty based on distance from the decision threshold.
+            confidence = compute_abandonment_confidence(abandonment_risk, threshold)
             
-            return {
+            result: dict[str, Any] = {
                 "abandonmentRisk": round(abandonment_risk, 4),
                 "willAbandon": bool(will_abandon),
                 "confidence": round(confidence, 4),
                 "threshold": threshold,
             }
+
+            if explain:
+                result["explanation"] = self._compute_shap_explanation(X, feature_values)
+
+            return result
             
         except Exception as e:
             raise ValueError(f"Prediction failed: {str(e)}")

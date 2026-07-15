@@ -1,0 +1,15 @@
+[
+  "timeOnPage",
+  "scrollDepth",
+  "clickMisses",
+  "hesitations",
+  "helpTriggered",
+  "hasError",
+  "multiplePages",
+  "timePerPage",
+  "clickMissRate",
+  "hesitationRate",
+  "frictionScore",
+  "highFriction",
+  "multipleIssues"
+]

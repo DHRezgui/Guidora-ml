@@ -16,7 +16,7 @@ PREDICT_SCRIPT = ML_DIR / "predict.py"
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from ml.predict import PredictionEngine
+from ml.predict import PredictionEngine, compute_abandonment_confidence
 
 
 def _sample_features() -> dict[str, float]:
@@ -71,7 +71,34 @@ def test_prediction_returns_expected_schema() -> None:
     assert isinstance(prediction["abandonmentRisk"], float)
     assert 0.0 <= prediction["abandonmentRisk"] <= 1.0
     assert 0.0 <= prediction["confidence"] <= 1.0
+    expected_confidence = compute_abandonment_confidence(
+        prediction["abandonmentRisk"],
+        prediction["threshold"],
+    )
+    assert prediction["confidence"] == pytest.approx(round(expected_confidence, 4))
     assert prediction["threshold"] == 0.5
+
+
+def test_confidence_is_distance_from_threshold() -> None:
+    assert compute_abandonment_confidence(0.2642, 0.5) == pytest.approx(0.4716, rel=1e-3)
+    assert compute_abandonment_confidence(0.78, 0.4) == pytest.approx(0.6333, rel=1e-3)
+    assert compute_abandonment_confidence(0.5, 0.5) == pytest.approx(0.0, abs=1e-6)
+
+
+@pytest.mark.model
+def test_prediction_can_attach_shap_explanation() -> None:
+    pytest.importorskip("shap")
+    _require_artifacts()
+    engine = PredictionEngine()
+
+    prediction = engine.predict(_sample_features(), threshold=0.5, explain=True)
+
+    assert "explanation" in prediction
+    explanation = prediction["explanation"]
+    assert isinstance(explanation.get("topFeatures"), list)
+    assert len(explanation["topFeatures"]) > 0
+    assert "feature" in explanation["topFeatures"][0]
+    assert "contribution" in explanation["topFeatures"][0]
 
 
 @pytest.mark.model

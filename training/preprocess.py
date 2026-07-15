@@ -25,6 +25,7 @@ from ml.config import (
 
 DEFAULT_NUMERIC_VALUES = {
     "timeOnPage": 0.0,
+    "pageTime": 0.0,
     "scrollDepth": 0.0,
     "clickMisses": 0.0,
     "hesitations": 0.0,
@@ -155,6 +156,7 @@ def _ensure_required_columns(frame: pd.DataFrame) -> None:
 def _clean_types_and_ranges(frame: pd.DataFrame) -> None:
     numeric_cols = [
         "timeOnPage",
+        "pageTime",
         "scrollDepth",
         "clickMisses",
         "hesitations",
@@ -165,6 +167,10 @@ def _clean_types_and_ranges(frame: pd.DataFrame) -> None:
 
     # Business constraints from behavioral metrics.
     frame["timeOnPage"] = frame["timeOnPage"].clip(lower=0)
+    if "pageTime" in frame.columns:
+        frame["pageTime"] = frame["pageTime"].fillna(frame["timeOnPage"]).clip(lower=0)
+        # page dwell cannot exceed session dwell
+        frame["pageTime"] = np.minimum(frame["pageTime"], frame["timeOnPage"])
     frame["scrollDepth"] = frame["scrollDepth"].clip(lower=0, upper=100)
     frame["clickMisses"] = frame["clickMisses"].clip(lower=0)
     frame["hesitations"] = frame["hesitations"].clip(lower=0)
@@ -192,6 +198,7 @@ def _impute_missing(frame: pd.DataFrame) -> None:
 
     numeric_cols = [
         "timeOnPage",
+        "pageTime",
         "scrollDepth",
         "clickMisses",
         "hesitations",
@@ -211,25 +218,9 @@ def _impute_missing(frame: pd.DataFrame) -> None:
 
 
 def _build_derived_features(frame: pd.DataFrame) -> None:
-    pages_single = int(PREPROCESSING_PARAMS["default_pages_single"])
-    pages_multi = int(PREPROCESSING_PARAMS["default_pages_multi"])
+    from ml.training.derived_features import build_derived_features_frame
 
-    estimated_pages = np.where(frame["multiplePages"] == 1, pages_multi, pages_single)
-    frame["timePerPage"] = frame["timeOnPage"] / np.maximum(estimated_pages, 1)
-
-    frame["clickMissRate"] = frame["clickMisses"] / np.maximum(frame["timeOnPage"], 1)
-    frame["hesitationRate"] = frame["hesitations"] / np.maximum(frame["timeOnPage"], 1)
-
-    fw = PREPROCESSING_PARAMS["friction_weights"]
-    frame["frictionScore"] = (
-        frame["clickMisses"] * float(fw["clickMisses"])
-        + frame["hesitations"] * float(fw["hesitations"])
-        + np.minimum(frame["timeOnPage"] / 120.0, 1.0) * float(fw["timeOnPage"])
-        + (1.0 - frame["scrollDepth"] / 100.0) * float(fw["scrollDepth"])
-    ).clip(lower=0, upper=1)
-
-    frame["highFriction"] = (frame["frictionScore"] > 0.7).astype(int)
-    frame["multipleIssues"] = ((frame["clickMisses"] > 1) & (frame["hesitations"] > 0)).astype(int)
+    build_derived_features_frame(frame)
 
 
 def _metadata_columns(frame: pd.DataFrame) -> list[str]:

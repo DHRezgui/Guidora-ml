@@ -1,5 +1,5 @@
 [
-  {
+    {
     "id": "faq-001",
     "question": "Comment creer un compte sur l'application ?",
     "answer": "Rendez-vous sur la page d'inscription ou demandez une invitation a votre equipe. Suivez les instructions recues par email pour activer votre compte et definir votre mot de passe.",
@@ -313,5 +313,5 @@
     "answer": "Selon votre organisation, l'application est accessible via un navigateur mobile adapte ou une application dediee. Verifiez les liens ou stores indiques par votre equipe.",
     "category": "mobile",
     "priority": "medium"
-  }
+    }
 ]
