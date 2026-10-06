@@ -18,6 +18,7 @@ htmlcov/
 .env
 .env.*
 !.env.example
+.docker/**/.env
 
 # OS / IDE
 .DS_Store
