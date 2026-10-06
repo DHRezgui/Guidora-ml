@@ -1,511 +1,198 @@
-# LightGBM ML Environment Setup Guide
+# Guidora Machine Learning
 
-## Overview
+This repository contains the Guidora machine-learning workflows for:
 
-This directory contains the machine learning pipeline for the **Abandonment Risk Prediction** model using **LightGBM**. The model predicts the risk of user abandonment in real-time to trigger proactive contextual help.
+- abandonment-risk training and real-time inference with LightGBM;
+- semantic FAQ embeddings and similarity search;
+- feature preparation, evaluation, and model reliability tests.
 
-## Prerequisites
+Repository: [DHRezgui/Guidora-ml](https://github.com/DHRezgui/Guidora-ml)
 
-- Python 3.9 or higher
-- pip package manager
-- Virtual environment (recommended)
-- PostgreSQL 15+ (for database access)
-- 4GB+ RAM recommended for model training
+## Requirements
 
-## Installation Steps
+- Python 3.9 or newer
+- pip and a virtual environment
+- PostgreSQL 15 or newer when using database-backed workflows
+- At least 4 GB of RAM for model training and sentence-transformer workloads
 
-### 1. Create Virtual Environment (Recommended)
+## Install
+
+Run these commands from the root of this repository:
 
 ```bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
+python -m venv .venv
+```
+
+Activate the environment:
+
+```bash
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
 
 # macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
-### 2. Install Dependencies
+Install dependencies and run the environment checks:
 
 ```bash
-pip install -r requirements.txt
-```
-
-### 3. Run Setup Script
-
-```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 python setup_ml_env.py
-```
-
-This script will:
-- Verify Python version
-- Install all dependencies
-- Verify LightGBM installation
-- Verify sentence-transformers installation
-- Create necessary directories (models, data, results, notebooks)
-- Test database connectivity
-
-## Project Structure
-
-```
-ml/
-├── config.py                 # LightGBM configuration & hyperparameters
-├── requirements.txt          # Python dependencies
-├── setup_ml_env.py          # Environment initialization script
-├── README.md                # This file
-├── models/                   # Trained model artifacts
-│   ├── lightgbm_model.pkl
-│   └── feature_names.json
-├── data/                     # Data files (excluded from git)
-│   ├── raw/
-│   └── processed/
-├── results/                  # Model evaluation results & metrics
-│   ├── metrics.json
-│   └── confusion_matrix.png
-├── notebooks/                # Jupyter notebooks
-│   ├── exploratory/         # Data exploration & EDA
-│   │   ├── 01_data_exploration.ipynb
-│   │   └── 02_feature_analysis.ipynb
-│   └── training/            # Model training notebooks
-│       ├── 03_model_training.ipynb
-│       └── 04_model_evaluation.ipynb
-└── training/                 # Training scripts
-    ├── __init__.py
-    ├── prepare_dataset.py
-    ├── preprocess.py
-    ├── train_model.py
-    └── evaluate.py
-```
-
-## Key Components
-
-### config.py
-
-Contains all configuration for the LightGBM model:
-- **Model parameters**: boosting type, learning rate, number of leaves, etc.
-- **Regularization settings**: lambda, alpha, subsampling rates
-- **Feature engineering options**: scaling, outlier removal, PCA
-- **Dataset parameters**: train/test split, stratification
-- **Evaluation settings**: threshold, SHAP values computation
-- **File paths**: models, data, results directories
-
-### Main Dependencies
-
-| Package | Version | Purpose |
-|---------|---------|---------|
-| lightgbm | 4.6.0 | Gradient Boosting framework |
-| scikit-learn | 1.8.0 | ML utilities & metrics |
-| pandas | 3.0.1 | Data manipulation |
-| numpy | 2.4.3 | Numerical computing |
-| sqlalchemy | 2.1.1 | Database ORM |
-| psycopg2 | 2.9.9 | PostgreSQL adapter |
-| jupyter | 1.1.1 | Notebook environment |
-| pytest | 8.3.2 | Testing framework |
-| sentence-transformers | 3.3.1 | Semantic embeddings for FAQ questions |
-
-## Semantic FAQ Embeddings (sentence-transformers)
-
-This sprint introduces semantic search capabilities for natural-language FAQ support.
-
-### Install / Verify
-
-```bash
-pip install -r requirements.txt
-python setup_ml_env.py
-```
-
-### Quick embedding smoke test
-
-```bash
-python ml/rag/semantic_embedder.py
-```
-
-Expected output includes:
-
-- selected model name
-- number of embedded questions
-- embedding vector dimension
-
-### Generate FAQ embeddings dataset
-
-Prepare FAQ entries in `ml/data/raw/faq_questions.json` with this schema:
-
-```json
-[
-    {
-        "id": "faq-001",
-        "question": "Comment réinitialiser mon mot de passe ?",
-        "answer": "...",
-        "category": "auth"
-    }
-]
-```
-
-Run generation:
-
-```bash
-python ml/rag/generate_faq_embeddings.py
-```
-
-Generated artifact:
-
-- `ml/results/faq_embeddings.json`
-
-The output contains model metadata, vector dimension, and one embedding vector for each FAQ question.
-
-### Semantic search (cosine similarity)
-
-Use semantic retrieval to find the most relevant FAQ entries for a user query:
-
-```bash
-python ml/rag/semantic_search.py "Je n'arrive pas a reinitialiser mon mot de passe"
-```
-
-Optional parameters:
-
-- `--top-k` to control the number of returned results
-- `--min-similarity` to filter low-relevance matches
-- `--embeddings` to use a custom embeddings file
-
-## Quick Start
-
-### 1. Activate Virtual Environment
-
-```bash
-# Windows
-venv\Scripts\activate
-
-# macOS/Linux
-source venv/bin/activate
-```
-
-### 2. Verify Installation
-
-```bash
-python setup_ml_env.py
-```
-
-Expected output shows all checks passing 
-
-Quick reproducible smoke test:
-
-```bash
 python verify_lightgbm_setup.py
 ```
 
-Expected output includes `LightGBM smoke test: OK` and an AUC score.
+## Repository layout
 
-### 3. Start Jupyter Lab
+- `predict.py`: one-shot abandonment-risk inference.
+- `abandonment_worker.py`: persistent JSON-lines inference worker.
+- `training/`: dataset preparation, feature engineering, training, and evaluation.
+- `rag/`: semantic FAQ embedding and retrieval scripts.
+- `models/`: trained model and feature-name artifacts.
+- `data/`: raw and processed datasets; local data should not contain personal information.
+- `results/`: evaluation and embedding outputs.
+- `tests/`: ML and prediction tests.
+- `config.py`: shared paths and training configuration.
 
-```bash
-jupyter lab
+## Prepare a training dataset
+
+The preparation script accepts a CSV export or JSON payload. A JSON input can
+contain a `features` array. The core feature columns are:
+
+```text
+timeOnPage, scrollDepth, clickMisses, hesitations, abandonmentRisk,
+helpTriggered, hasError, multiplePages, label
 ```
 
-Then navigate to `notebooks/exploratory/` to explore data.
-
-### 4. Train Model (When Ready)
+Run it from the ML repository root:
 
 ```bash
-python ml/training/train_model.py --input ml/data/raw/dataset.json
+python training/prepare_dataset.py --input data/raw/dataset.json
 ```
 
-The training command automatically:
+The pipeline writes prepared data to `data/processed/`, including train,
+validation, test, and metadata files. It derives `timePerPage`,
+`clickMissRate`, `hesitationRate`, `frictionScore`, `highFriction`, and
+`multipleIssues`.
 
-- loads and prepares the dataset
-- trains a LightGBM classifier
-- evaluates validation/test splits
-- saves model and metrics artifacts
-
-Generated artifacts:
-
-- `ml/models/lightgbm_model.pkl`
-- `ml/models/feature_names.json`
-- `ml/results/metrics.json`
-
-Metrics report includes:
-
-- `accuracy`
-- `precision`
-- `recall`
-- `auc`
-- confusion matrix (tn/fp/fn/tp)
-
-## Data Preparation and Feature Engineering
-
-This step transforms backend exported datasets into clean and structured
-training matrices while preserving project business logic.
-
-### Input expectations
-
-- Supports CSV export from backend ML endpoints
-- Supports JSON export with `{"features": [...]}` payload
-- Expects the backend schema columns: `timeOnPage`, `scrollDepth`, `clickMisses`,
-  `hesitations`, `abandonmentRisk`, `helpTriggered`, `hasError`, `multiplePages`, `label`
-
-### Run preparation pipeline
+## Train and evaluate the model
 
 ```bash
-python ml/training/prepare_dataset.py --input ml/data/raw/dataset.json
+python training/train_model.py --input data/raw/dataset.json
 ```
 
-Generated outputs in `ml/data/processed/`:
+The training workflow writes the model and evaluation artifacts under `models/`
+and `results/`, including:
 
-- `dataset_prepared.csv`
-- `X_train.csv`, `X_valid.csv`, `X_test.csv`
-- `y_train.csv`, `y_valid.csv`, `y_test.csv`
-- `dataset_metadata.json`
+- `models/lightgbm_model.pkl`;
+- `models/feature_names.json`;
+- `results/metrics.json`.
 
-### Derived features created
+Reported metrics include accuracy, precision, recall, AUC, and confusion-matrix
+counts. Do not publish datasets, model artifacts derived from private data, or
+run logs containing personal information.
 
-- `timePerPage`
-- `clickMissRate`
-- `hesitationRate`
-- `frictionScore`
-- `highFriction`
-- `multipleIssues`
+## Real-time inference
 
-## Automated Tests (Model Reliability)
-
-Automated tests for the prediction model are located in `ml/tests/test_predict.py`.
-
-The test suite validates:
-
-- model artifact loading (`lightgbm_model.pkl`, `feature_names.json`)
-- prediction output schema and value ranges
-- missing-feature imputation behavior
-- CLI real-time prediction via stdin JSON
-- threshold-dependent binary decision behavior
-
-### Run only prediction tests
-
-```bash
-python -m pytest ml/tests/test_predict.py -v
-```
-
-### Run all ML tests
-
-```bash
-python -m pytest ml/tests -v
-```
-
-## Real-time Model Usage (Integration Contract)
-
-The real-time predictor is exposed through the backend API and backed by
-the `ml/predict.py` script.
-
-### REST endpoints
-
-- `POST /ml/predictions/abandonment`
-- `POST /ml/predictions/batch`
-- `GET /ml/predictions/health`
-
-### Single prediction request example
+`predict.py` loads the trained model and accepts either an input file or JSON on
+stdin. Example input:
 
 ```json
 {
-    "features": {
-        "timeOnPage": 83,
-        "scrollDepth": 41.4,
-        "clickMisses": 0,
-        "hesitations": 2,
-        "abandonmentRisk": 0.2,
-        "helpTriggered": 0,
-        "hasError": 0,
-        "multiplePages": 1
-    },
-    "threshold": 0.5
+  "features": {
+    "timeOnPage": 83,
+    "scrollDepth": 41.4,
+    "clickMisses": 0,
+    "hesitations": 2,
+    "abandonmentRisk": 0.2,
+    "helpTriggered": 0,
+    "hasError": 0,
+    "multiplePages": 1
+  },
+  "threshold": 0.5
 }
 ```
 
-### Single prediction response example
+Run a file-based prediction:
+
+```bash
+python predict.py --input data/sample-features.json
+```
+
+Run through stdin:
+
+```bash
+echo '{"features":{"timeOnPage":83,"scrollDepth":41.4,"clickMisses":0,"hesitations":2,"abandonmentRisk":0.2,"helpTriggered":0,"hasError":0,"multiplePages":1}}' | python predict.py
+```
+
+The result contains an abandonment probability, a binary `willAbandon` decision,
+a confidence score, and the threshold used. Use `--model`, `--features`, and
+`--threshold` to override the default paths and decision threshold.
+
+For long-lived backend processes, `abandonment_worker.py` loads the model once
+and serves newline-delimited JSON requests over stdin/stdout. Logs are written
+to stderr so stdout remains machine-readable.
+
+## Semantic FAQ search
+
+Prepare FAQ entries in `data/raw/faq_questions.json`:
 
 ```json
-{
-    "success": true,
-    "prediction": {
-        "abandonmentRisk": 0.0106,
-        "willAbandon": false,
-        "confidence": 0.5106,
-        "threshold": 0.5
-    },
-    "timestamp": "2026-03-25T10:30:00.000Z",
-    "metadata": {
-        "modelVersion": "1.0",
-        "executionTimeMs": 145
-    }
-}
+[
+  {
+    "id": "faq-001",
+    "question": "How do I reset my password?",
+    "answer": "Use the password reset link on the sign-in page.",
+    "category": "auth"
+  }
+]
 ```
 
-### CLI contract (script-level integration)
-
-`ml/predict.py` supports stdin JSON payloads and prints JSON results to stdout:
+Generate embeddings and search them from the repository root:
 
 ```bash
-echo '{"features":{"timeOnPage":83,"scrollDepth":41.4,"clickMisses":0,"hesitations":2,"abandonmentRisk":0.2,"helpTriggered":0,"hasError":0,"multiplePages":1}}' | python ml/predict.py
+python rag/generate_faq_embeddings.py
+python rag/semantic_search.py "How do I reset my password?"
 ```
 
-This interface is used by the backend prediction service and can be reused by
-other consumers (workers, SDK bridges, batch jobs).
+Use `--top-k`, `--min-similarity`, and `--embeddings` to customize retrieval.
+Generated embeddings are written under `results/`.
 
-## Configuration Customization
+## Backend integration
 
-Edit `config.py` to adjust model hyperparameters:
+The backend exposes the ML functionality under its versioned API prefix:
 
-```python
-LIGHTGBM_CONFIG = {
-    "learning_rate": 0.05,      # Lower = slower, more accurate
-    "num_leaves": 31,           # Complexity of each tree
-    "max_depth": 7,             # Max tree depth
-    "n_estimators": 100,        # Number of boosting rounds
-    "subsample": 0.8,           # Data sampling rate
-    "colsample_bytree": 0.8,   # Feature sampling rate
-}
-```
+- `POST /api/v1/ml/predictions/abandonment`
+- `POST /api/v1/ml/predictions/batch`
+- `GET /api/v1/ml/predictions/health`
 
-### Recommended Starting Points
+The backend starts the persistent worker in its Docker development setup and
+uses this repository's `predict.py` and model artifacts. See the backend
+repository for authentication, authorization, rate limits, and request schemas.
 
-**For Speed** (Quick experimentation):
-```python
-"learning_rate": 0.1,
-"n_estimators": 50,
-"num_leaves": 15,
-```
-
-**Balanced** (Default):
-```python
-"learning_rate": 0.05,
-"n_estimators": 100,
-"num_leaves": 31,
-```
-
-**For Accuracy** (Production):
-```python
-"learning_rate": 0.02,
-"n_estimators": 200,
-"num_leaves": 63,
-```
-
-## Database Connection Setup
-
-For model training to work, you need to configure database access:
-
-1. Ensure PostgreSQL is running
-2. Create `.env` file in the `ml/` directory:
-
-```
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=trustdev_db
-DB_USER=postgres
-DB_PASSWORD=your_password
-```
-
-3. Verify connection:
+## Tests and quality checks
 
 ```bash
-python -c "from sqlalchemy import create_engine; engine = create_engine('postgresql://user:pwd@localhost:5432/db'); print(' Connection OK')"
+python -m pytest tests -v
+python -m pytest tests/test_predict.py -v
+black --check .
+flake8 .
+mypy predict.py config.py
 ```
 
-## Troubleshooting
+The prediction tests cover model loading, output shape and ranges, missing
+feature handling, threshold decisions, and the CLI contract.
 
-### Issue: "No module named 'lightgbm'"
+## Configuration and data safety
 
-**Solution**: Reinstall LightGBM
+Training paths and LightGBM settings are defined in `config.py`. Database
+connections use environment variables such as `DB_HOST`, `DB_PORT`, `DB_NAME`,
+`DB_USER`, and `DB_PASSWORD`.
 
-```bash
-pip uninstall lightgbm
-pip install --no-cache-dir lightgbm==4.6.0
-```
+Never commit `.env` files, credentials, private datasets, or generated outputs
+containing personal data. Use `.env.example` as a template where available.
 
-### Issue: "psycopg2.OperationalError: connection refused"
+## License
 
-**Solution**: Verify PostgreSQL is running and connection string in `.env` is correct
-
-```bash
-# Check PostgreSQL service
-# Windows
-net start postgresql-x64-15
-
-# macOS
-brew services start postgresql
-
-# Linux
-sudo systemctl start postgresql
-```
-
-### Issue: "Out of Memory" during model training
-
-**Solution**: Reduce batch size and sample size in config.py
-
-```python
-"bagging_fraction": 0.5,  # Reduce from 0.8
-"feature_fraction": 0.5,  # Reduce from 0.8
-```
-
-### Issue: Virtual environment not activating
-
-**Solution**: Check Python path and reinstall venv
-
-```bash
-python -m venv --clear venv
-# Then activate again
-```
-
-## Development Tools
-
-### Code Quality
-
-```bash
-# Format code
-black setup_ml_env.py config.py
-
-# Check types
-mypy setup_ml_env.py
-
-# Lint
-flake8 setup_ml_env.py --max-line-length=100
-```
-
-### Testing
-
-```bash
-# Run tests
-pytest tests/ -v
-
-# With coverage
-pytest tests/ --cov=. --cov-report=html
-```
-
-## Next Steps
-
-After successful installation:
-
-1.  **Verify setup** with `python setup_ml_env.py`
-2. � **Explore data** with Jupyter notebooks
-3. � **Analyze features** in `02_feature_analysis.ipynb`
-4. � **Train model** with `03_model_training.ipynb`
-5.  **Evaluate performance** with `04_model_evaluation.ipynb`
-6.  **Deploy to production** (when ready)
-
-## Resources
-
-- [LightGBM Official Documentation](https://lightgbm.readthedocs.io/)
-- [Scikit-learn Model Selection](https://scikit-learn.org/stable/modules/model_selection.html)
-- [Random Forest vs Gradient Boosting](https://www.kaggle.com/c/titanic)
-- [SHAP for Model Interpretability](https://shap-lrjball.readthedocs.io/)
-
-## Support
-
-For issues or questions:
-1. Check the Troubleshooting section above
-2. Review setup logs in console output
-3. Verify database connection with `.env` file
-4. Check PostgreSQL service status
-
----
-
-**Last Updated**: March 2026
-**LightGBM Version**: 4.6.0
-**Python Version**: 3.9+
-
+Confirm the intended open-source license and add a `LICENSE` file before a
+formal public release.
